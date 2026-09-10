@@ -1,0 +1,1747 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- TITLE: must carry the version number. Pattern: "{Doc Title} v{N.N} — {subtitle}" -->
+<title>Oil From the Reservoir Up v1.0 — a field guide for people starting at zero</title>
+<meta name="description" content="A ground-up guide to the oil and gas industry: petroleum geology, reserves reporting, drilling and completion, decline curves, differentials and refining, project economics, cost metrics, valuation, ownership and financing, fiscal regimes and tax structure, promotional red flags, and the 2026 map. Built for readers with no prior background." />
+<meta name="theme-color" content="#f5f5f7" id="themeColorMeta" />
+<meta name="color-scheme" content="light dark" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Oil From the Reservoir Up v1.0" />
+<meta property="og:description" content="A ground-up guide to the oil and gas industry: petroleum geology, reserves reporting, drilling and completion, decline curves, differentials and refining, project economics, cost metrics, valuation, ownership and financing, fiscal regimes and tax structure, promotional red flags, and the 2026 map. Built for readers with no prior background." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%230071e3'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700;8..60,900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================================
+   TOKENS — the ONLY place literal colors are allowed in this file.
+   Every rule below this block references var(--…). No exceptions.
+   Light and dark are declared as matched pairs so nothing can go
+   white-on-white or black-on-black when the theme flips.
+   ========================================================================= */
+:root{
+  color-scheme:light;
+  /* page + surfaces */
+  --bg:#f5f5f7;
+  --bg-grad-1:rgba(234,243,255,.85);
+  --bg-grad-2:rgba(255,240,223,.75);
+  --bg-grad-3:#fbfbfd;
+  --bg-grad-4:#eff2f6;
+  --surface:#ffffff;
+  --surface-2:#f0f0f3;
+  --surface-3:#f1f3f5;
+  --glass:rgba(255,255,255,.72);
+  --glass-2:rgba(255,255,255,.60);
+  --glass-border:rgba(255,255,255,.72);
+  --nav-bg:rgba(245,245,247,.90);
+  /* text */
+  --ink:#111114;
+  --ink-2:#3a3f4c;
+  --ink-3:#4a505c;
+  --ink-dim:#6b6f7b;
+  --ink-strong:#000000;
+  /* lines */
+  --line:rgba(0,0,0,.09);
+  --line-2:rgba(0,0,0,.16);
+  --line-solid:#e3e3e8;
+  --line-strong:#d2d2d7;
+  /* accents */
+  --blue:#0071e3;      --blue-ink:#0057b8;    --blue-soft:#e9f3ff;
+  --green:#1f8f4e;     --green-ink:#0f6a36;   --green-soft:#e9f7ee;
+  --orange:#b65f00;    --orange-ink:#8a4800;  --orange-soft:#fff1df;
+  --purple:#6b47d6;    --purple-ink:#4d32a3;  --purple-soft:#f0edff;
+  --red:#bd2b28;       --red-ink:#a52320;     --red-soft:#fdeceb;
+  --on-accent:#ffffff;
+  /* inverted panel — the deliberately high-contrast block.
+     Dark in light mode; a LIFTED panel in dark mode so it never vanishes. */
+  --invert-bg:#141417;
+  --invert-ink:#f5f5f7;
+  --invert-ink-2:#c9ccd3;
+  --invert-line:#2a2a30;
+  /* code */
+  --code-bg:#141417;   --code-ink:#e6e8ee;    --code-line:#2a2a30;
+  --code-c:#7f8798; --code-k:#6fb2ff; --code-g:#63d193; --code-r:#ff7b72; --code-y:#ffc46b;
+  --code-light-bg:#f1f2f4; --code-light-ink:#1c1f26;
+  /* callouts */
+  --note-bg:rgba(0,113,227,.05);   --note-line:rgba(0,113,227,.20);
+  --warn-bg:#fff7e8;               --warn-line:#f2d6a7;  --warn-ink:#5c3b00;
+  /* chrome */
+  --strip-bg:#111114;  --strip-ink:#ffffff;
+  --strip-btn:rgba(255,255,255,.10); --strip-btn-hover:rgba(255,255,255,.20);
+  --strip-line:rgba(255,255,255,.20);
+  --pill-bg:rgba(255,255,255,.68);  --pill-ink:#252934;
+  --pill-on-bg:#111114;             --pill-on-ink:#ffffff;
+  --shadow:0 18px 60px rgba(0,0,0,.10);
+  --shadow-2:0 8px 28px rgba(0,0,0,.08);
+  --shadow-hover:0 16px 50px rgba(0,0,0,.11);
+  --orb-opacity:.72;
+  --gradtext:linear-gradient(102deg,#17191d 0%,#465365 48%,#0874dc 86%,#0068c9 100%);
+  --gradtext-fallback:#34475f;
+  /* type + geometry */
+  --serif:'Source Serif 4', ui-serif, Georgia, serif;
+  --sans:'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', Segoe UI, sans-serif;
+  --mono:'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  --radius:28px; --radius-2:18px;
+}
+
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0d0d10;
+  --bg-grad-1:rgba(23,42,71,.55);
+  --bg-grad-2:rgba(58,40,20,.45);
+  --bg-grad-3:#101015;
+  --bg-grad-4:#0a0a0d;
+  --surface:#17171c;
+  --surface-2:#1d1d23;
+  --surface-3:#22222a;
+  --glass:rgba(30,30,37,.72);
+  --glass-2:rgba(30,30,37,.60);
+  --glass-border:rgba(255,255,255,.10);
+  --nav-bg:rgba(16,16,20,.90);
+  --ink:#f2f2f5;
+  --ink-2:#c3c7d1;
+  --ink-3:#adb2bd;
+  --ink-dim:#9096a3;
+  --ink-strong:#ffffff;
+  --line:rgba(255,255,255,.12);
+  --line-2:rgba(255,255,255,.20);
+  --line-solid:#2b2b33;
+  --line-strong:#3a3a44;
+  --blue:#4da3ff;      --blue-ink:#8cc3ff;    --blue-soft:rgba(77,163,255,.16);
+  --green:#4bc47d;     --green-ink:#7fd9a2;   --green-soft:rgba(75,196,125,.16);
+  --orange:#f0a23c;    --orange-ink:#f5bd72;  --orange-soft:rgba(240,162,60,.16);
+  --purple:#a78bfa;    --purple-ink:#c4b1ff;  --purple-soft:rgba(167,139,250,.18);
+  --red:#f0736e;       --red-ink:#f79b97;     --red-soft:rgba(240,115,110,.16);
+  --on-accent:#0d0d10;
+  --invert-bg:#22222b;
+  --invert-ink:#f5f5f7;
+  --invert-ink-2:#c9ccd3;
+  --invert-line:#3d3d49;
+  --code-bg:#101014;   --code-ink:#e6e8ee;    --code-line:#2f2f3a;
+  --code-light-bg:#1b1b21; --code-light-ink:#dfe2e9;
+  --note-bg:rgba(77,163,255,.10);  --note-line:rgba(77,163,255,.30);
+  --warn-bg:rgba(240,162,60,.12);  --warn-line:rgba(240,162,60,.34); --warn-ink:#f3cd95;
+  --strip-bg:#000000;  --strip-ink:#f2f2f5;
+  --strip-btn:rgba(255,255,255,.10); --strip-btn-hover:rgba(255,255,255,.22);
+  --strip-line:rgba(255,255,255,.22);
+  --pill-bg:rgba(255,255,255,.07);  --pill-ink:#dcdfe7;
+  --pill-on-bg:#f2f2f5;             --pill-on-ink:#0d0d10;
+  --shadow:0 18px 60px rgba(0,0,0,.55);
+  --shadow-2:0 8px 28px rgba(0,0,0,.45);
+  --shadow-hover:0 16px 50px rgba(0,0,0,.60);
+  --orb-opacity:.30;
+  --gradtext:linear-gradient(102deg,#ffffff 0%,#cdd8e8 48%,#6fb2ff 86%,#4da3ff 100%);
+  --gradtext-fallback:#cfe0f5;
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ============================ base ============================ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 15% 0%, var(--bg-grad-1) 0, transparent 38%),
+    radial-gradient(circle at 80% 8%, var(--bg-grad-2) 0, transparent 32%),
+    linear-gradient(180deg, var(--bg-grad-3) 0, var(--bg) 45%, var(--bg-grad-4) 100%);
+  background-attachment:fixed;
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.45;
+  transition:background-color .2s ease, color .2s ease;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1460px;margin:0 auto;padding:0 26px}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+.vlabel{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mono{font-family:var(--mono)}
+
+/* ============================ topbar ============================ */
+.topbar{position:sticky;top:0;z-index:60}
+.contact-strip{background:var(--strip-bg);color:var(--strip-ink);border-bottom:1px solid var(--strip-line)}
+.contact-strip-inner{max-width:1460px;margin:0 auto;padding:8px 26px;display:flex;justify-content:flex-end;align-items:center;gap:8px}
+.contact-link{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;border:1px solid var(--strip-line);background:var(--strip-btn);color:var(--strip-ink);font-size:12px;font-weight:700;letter-spacing:-.01em;transition:background .16s,transform .16s}
+.contact-link:hover{background:var(--strip-btn-hover);transform:translateY(-1px)}
+.contact-link svg{width:14px;height:14px;fill:currentColor;flex:0 0 auto}
+.themetoggle{display:inline-flex;align-items:center;gap:7px;margin-left:6px;padding:7px 11px;border-radius:999px;border:1px solid var(--strip-line);background:var(--strip-btn);color:var(--strip-ink);font-family:var(--sans);font-size:12px;font-weight:700;cursor:pointer;transition:background .16s,transform .16s}
+.themetoggle:hover{background:var(--strip-btn-hover);transform:translateY(-1px)}
+.themetoggle svg{width:14px;height:14px;fill:currentColor;flex:0 0 auto}
+html[data-theme="light"] .themetoggle .i-moon{display:block}
+html[data-theme="light"] .themetoggle .i-sun{display:none}
+html[data-theme="dark"]  .themetoggle .i-moon{display:none}
+html[data-theme="dark"]  .themetoggle .i-sun{display:block}
+
+.nav{background:var(--nav-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1460px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:13px 26px}
+.brand{font-weight:800;letter-spacing:-.03em;white-space:nowrap;color:var(--ink)}
+.brand span{font-family:var(--serif);font-weight:900}
+.brand .vtag{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-dim);letter-spacing:.02em;margin-left:6px}
+.navlinks{display:flex;gap:6px;margin-left:auto;flex-wrap:nowrap;overflow-x:auto;min-width:0;padding-bottom:2px;scrollbar-width:thin}
+.navlinks a{flex:0 0 auto;white-space:nowrap;border:1px solid var(--line);background:var(--pill-bg);color:var(--pill-ink);padding:8px 12px;border-radius:999px;font-size:13px;cursor:pointer}
+.navlinks a.active{background:var(--pill-on-bg);color:var(--pill-on-ink);border-color:var(--pill-on-bg)}
+.menubtn{display:none;margin-left:auto;border:1px solid var(--line);background:var(--pill-bg);border-radius:12px;width:40px;height:36px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px}
+.menubtn i{display:block;width:16px;height:1.6px;background:var(--ink);border-radius:2px}
+.drawer{display:none;border-top:1px solid var(--line);background:var(--nav-bg);backdrop-filter:blur(18px);padding:12px 16px 16px}
+.drawer.open{display:block}
+.drawer a{display:block;padding:11px 4px;border-bottom:1px solid var(--line);font-size:15px;font-weight:600;color:var(--ink)}
+
+/* ============================ hero ============================ */
+.hero{min-height:78vh;display:flex;align-items:center;position:relative;isolation:isolate;overflow:hidden;padding:46px 0 26px}
+.orb{position:absolute;border-radius:50%;pointer-events:none;z-index:-1;opacity:var(--orb-opacity);filter:blur(22px)}
+.orb.a{width:540px;height:540px;background:radial-gradient(circle at 36% 34%,var(--blue) 0 14%,transparent 72%);right:-155px;top:-118px}
+.orb.b{width:370px;height:370px;background:radial-gradient(circle at 58% 44%,var(--orange) 0 14%,transparent 72%);left:-142px;bottom:54px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:16px}
+.eyebrow b{color:var(--ink-2)}
+.h1{font-family:var(--serif);font-size:clamp(48px,7vw,104px);line-height:.92;letter-spacing:-.06em;margin:0 0 24px;color:var(--ink)}
+.h1 em{font-style:normal;background:var(--gradtext);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gradtext-fallback)}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){.h1 em{background:none;-webkit-text-fill-color:currentColor;color:var(--gradtext-fallback)}}
+.lede{font-size:clamp(18px,2.1vw,25px);line-height:1.34;color:var(--ink-2);max-width:840px;margin:0 0 26px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.cta{background:var(--pill-on-bg);color:var(--pill-on-ink);border:1px solid var(--pill-on-bg);border-radius:999px;padding:13px 17px;font-weight:700;display:inline-flex;gap:9px;align-items:center;font-size:14.5px;cursor:pointer;font-family:var(--sans)}
+.cta.secondary{background:var(--glass);color:var(--ink);border:1px solid var(--line-2)}
+
+/* ============================ sections ============================ */
+.section{padding:70px 0;scroll-margin-top:124px}
+.section h2{font-family:var(--serif);font-size:clamp(36px,4.4vw,64px);line-height:.96;letter-spacing:-.05em;margin:0 0 14px;color:var(--ink)}
+.section h3.sub-h{font-family:var(--serif);font-size:28px;letter-spacing:-.04em;margin:40px 0 8px;font-weight:700;color:var(--ink)}
+.section .sub{font-size:18.5px;color:var(--ink-3);max-width:940px;margin:0 0 28px;line-height:1.5}
+.section p{color:var(--ink-3)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.rule{height:1px;background:var(--line);margin:0;border:0}
+
+/* ============================ components ============================ */
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+
+.card{background:var(--glass);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--shadow-2);transition:transform .18s ease,box-shadow .18s ease;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.card h3{margin:0 0 9px;font-size:19px;letter-spacing:-.035em;line-height:1.15;color:var(--ink)}
+.card p{margin:0;color:var(--ink-3);font-size:14px}
+.card ul{margin:10px 0 0;padding-left:17px;color:var(--ink-3);font-size:13.5px}
+.card li{margin:0 0 6px}
+
+.panel{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-2);padding:22px}
+.panel h3{margin:0 0 6px;font-size:21px;letter-spacing:-.035em;color:var(--ink)}
+.panel p,.panel li{color:var(--ink-3);font-size:14.5px}
+.panel ul,.panel ol{margin:12px 0 0;padding-left:18px}
+
+/* inverted panel: high-contrast in BOTH themes */
+.panel.invert,.plainbox{background:var(--invert-bg);border:1px solid var(--invert-line);color:var(--invert-ink);border-radius:24px;padding:26px 28px;box-shadow:var(--shadow)}
+.panel.invert h3,.plainbox h3{color:var(--invert-ink);font-family:var(--serif);font-size:24px;letter-spacing:-.035em;margin:0 0 10px}
+.panel.invert p,.panel.invert li,.plainbox p{color:var(--invert-ink-2);font-size:15.5px;line-height:1.6}
+
+.stat{padding:18px;background:var(--glass);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-2)}
+.stat .n{font-family:var(--serif);font-size:40px;font-weight:900;letter-spacing:-.05em;line-height:.9;color:var(--ink)}
+.stat .t{font-size:12.5px;color:var(--ink-dim);margin-top:8px;line-height:1.4}
+
+.meta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.tag{font-family:var(--mono);font-size:11px;color:var(--ink-2);background:var(--surface-3);border:1px solid var(--line);border-radius:999px;padding:5px 8px;display:inline-block}
+.tag.blue{background:var(--blue-soft);color:var(--blue-ink);border-color:var(--blue-soft)}
+.tag.green{background:var(--green-soft);color:var(--green-ink);border-color:var(--green-soft)}
+.tag.orange{background:var(--orange-soft);color:var(--orange-ink);border-color:var(--orange-soft)}
+.tag.purple{background:var(--purple-soft);color:var(--purple-ink);border-color:var(--purple-soft)}
+.tag.red{background:var(--red-soft);color:var(--red-ink);border-color:var(--red-soft)}
+
+.fieldnote{font-size:13.5px;line-height:1.6;color:var(--ink-3);background:var(--note-bg);border:1px solid var(--note-line);border-left:3px solid var(--blue);border-radius:14px;padding:14px 18px;margin:24px 0;max-width:90ch}
+.fieldnote b{color:var(--blue)}
+.warning{background:var(--warn-bg);border:1px solid var(--warn-line);border-left:3px solid var(--orange);border-radius:14px;padding:14px 18px;color:var(--warn-ink);margin:22px 0;font-size:13.5px;max-width:90ch}
+.warning b{color:var(--orange-ink)}
+
+.chip{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:100px;border:1px solid var(--line-strong);background:var(--pill-bg);color:var(--ink-3);cursor:pointer;transition:.15s}
+.chip:hover{border-color:var(--ink-dim);color:var(--ink)}
+.chip.active{background:var(--blue);border-color:var(--blue);color:var(--on-accent)}
+.chiprow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+
+.tablewrap{background:var(--glass);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-2);overflow:hidden}
+.table-scroll{overflow:auto}
+table{border-collapse:collapse;width:100%}
+th{position:sticky;top:0;background:var(--surface);z-index:2;text-align:left;font-size:11px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-dim);padding:14px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{vertical-align:top;padding:14px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink-3)}
+tr:last-child td{border-bottom:none}
+td:first-child{font-weight:700;color:var(--ink)}
+
+pre.term{font-family:var(--mono);font-size:12px;line-height:1.62;background:var(--code-bg);color:var(--code-ink);border:1px solid var(--code-line);border-radius:16px;padding:16px 18px;overflow:auto;margin:14px 0 0;white-space:pre}
+pre.term .c{color:var(--code-c)} pre.term .k{color:var(--code-k)}
+pre.term .g{color:var(--code-g)} pre.term .r{color:var(--code-r)} pre.term .y{color:var(--code-y)}
+pre.light{font-family:var(--mono);font-size:12px;line-height:1.6;background:var(--code-light-bg);color:var(--code-light-ink);border:1px solid var(--line);border-radius:14px;padding:14px 16px;overflow:auto;margin:12px 0 0;white-space:pre}
+
+/* accordion */
+.fam{background:var(--surface);border:1px solid var(--line-solid);border-radius:18px;overflow:hidden;margin-bottom:10px;transition:border-color .18s}
+.fam.open{border-color:var(--line-strong);box-shadow:var(--shadow-2)}
+.fam-head{display:grid;grid-template-columns:46px 1fr auto;gap:16px;align-items:center;padding:20px 22px;cursor:pointer;width:100%;text-align:left;background:none;border:none;color:var(--ink);font:inherit}
+.fam-dot{width:40px;height:40px;border-radius:9px;display:grid;place-items:center;font-family:var(--serif);font-size:19px;color:var(--on-accent);background:var(--blue);font-weight:700}
+.fam-title{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.fam-sub{font-family:var(--mono);font-size:11px;color:var(--ink-dim);margin-top:3px}
+.fam-toggle{font-family:var(--mono);font-size:20px;color:var(--ink-dim);transition:transform .2s}
+.fam.open .fam-toggle{transform:rotate(45deg)}
+.fam-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease;border-top:1px solid transparent}
+.fam.open .fam-body{grid-template-rows:1fr;border-top-color:var(--line-solid)}
+.fam-body>div{overflow:hidden}
+.fam-inner{padding:18px 22px 22px;color:var(--ink-3);font-size:14.5px;line-height:1.6}
+
+/* ============================ footer ============================ */
+.footer{padding:34px 0 60px;color:var(--ink-dim);font-size:13px;border-top:1px solid var(--line);margin-top:40px}
+.footer a{color:var(--blue)}
+.verstamp{font-family:var(--mono);font-size:11.5px;color:var(--ink-dim);line-height:1.6}
+
+@media(max-width:960px){
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .navlinks{display:none}
+  .menubtn{display:flex}
+  .contact-strip-inner{padding:7px 14px;justify-content:center;gap:6px}
+  .contact-link,.themetoggle{flex:1;justify-content:center;max-width:130px;padding:7px 8px;font-size:11px}
+  .hero{min-height:auto;padding:36px 0}
+  .section{padding:48px 0}
+}
+
+/* ============================ additions for this document ============================ */
+
+/* form controls — all colors tokenised so they flip with the theme */
+.controls{display:grid;gap:18px}
+.ctrl{display:grid;gap:7px}
+.ctrl .lab{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctrl .lab span{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-dim)}
+.ctrl .lab b{font-family:var(--mono);font-size:13.5px;color:var(--ink);font-weight:700}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:99px;background:var(--line-strong);outline:none;margin:6px 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:19px;height:19px;border-radius:50%;background:var(--blue);border:3px solid var(--surface);cursor:pointer;box-shadow:var(--shadow-2)}
+input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--blue);border:3px solid var(--surface);cursor:pointer}
+input[type=search],input[type=text]{font-family:var(--sans);font-size:14.5px;padding:12px 14px;border-radius:14px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%;-webkit-appearance:none;appearance:none}
+input[type=search]::placeholder,input[type=text]::placeholder{color:var(--ink-dim)}
+
+/* calculator shell */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.out{display:grid;gap:0}
+.outrow{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--line)}
+.outrow:last-child{border-bottom:none}
+.outrow .k{font-size:13.5px;color:var(--ink-3);line-height:1.3}
+.outrow .v{font-family:var(--mono);font-size:14.5px;font-weight:700;color:var(--ink);white-space:nowrap}
+.outrow.hi{border-top:1px solid var(--line-2);margin-top:6px;padding-top:14px}
+.outrow.hi .k{color:var(--ink);font-weight:700;font-size:14.5px}
+.outrow.hi .v{font-size:19px;color:var(--blue)}
+.outrow .v.pos{color:var(--green)}
+.outrow .v.neg{color:var(--red)}
+.bar{height:7px;border-radius:99px;background:var(--surface-3);overflow:hidden;margin-top:9px;border:1px solid var(--line)}
+.bar i{display:block;height:100%;background:var(--blue);transition:width .18s ease}
+.bar i.warn{background:var(--orange)}
+.bar i.bad{background:var(--red)}
+
+/* glossary */
+.gwrap{display:grid;gap:10px}
+.gitem{background:var(--surface);border:1px solid var(--line-solid);border-radius:16px;padding:15px 18px}
+.gitem h4{margin:0 0 5px;font-size:15.5px;letter-spacing:-.02em;color:var(--ink);display:flex;flex-wrap:wrap;gap:9px;align-items:baseline}
+.gitem h4 em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);border:1px solid var(--line);border-radius:99px;padding:3px 7px}
+.gitem p{margin:0;font-size:14px;line-height:1.55;color:var(--ink-3)}
+.gitem.hide{display:none}
+.gcount{font-family:var(--mono);font-size:11.5px;color:var(--ink-dim);margin:14px 0 16px}
+
+/* numbered process cards */
+.card .num{font-family:var(--serif);font-size:13px;font-weight:900;color:var(--on-accent);background:var(--blue);width:26px;height:26px;border-radius:8px;display:grid;place-items:center;margin-bottom:11px}
+.card .num.g{background:var(--green)} .card .num.o{background:var(--orange)}
+.card .num.p{background:var(--purple)} .card .num.r{background:var(--red)}
+
+/* chart shell */
+.chartbox{background:var(--surface);border:1px solid var(--line-solid);border-radius:24px;padding:20px 22px 14px;box-shadow:var(--shadow-2);overflow:hidden}
+.chartbox svg{width:100%;height:auto;display:block}
+.lc-label{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase}
+.lc-stage{cursor:pointer}
+.lc-stage rect{opacity:0}
+.lc-stage:hover rect,.lc-stage.on rect{opacity:1}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend i.b{background:var(--blue)} .legend i.o{background:var(--orange)} .legend i.g{background:var(--green)}
+
+/* two-column prose split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.tight{max-width:78ch}
+.eq{font-family:var(--mono);font-size:13.5px;background:var(--code-light-bg);color:var(--code-light-ink);border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin:16px 0;overflow-x:auto;white-space:nowrap}
+.srcnote{font-family:var(--mono);font-size:10.5px;color:var(--ink-dim);margin-top:10px;letter-spacing:.02em}
+.toclist{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:22px 0 0}
+.toclist a{display:block;padding:11px 14px;border:1px solid var(--line);border-radius:14px;background:var(--glass-2);font-size:13.5px;color:var(--ink-2);font-weight:600}
+.toclist a:hover{border-color:var(--line-2);color:var(--ink)}
+.toclist a b{font-family:var(--mono);font-size:10.5px;color:var(--ink-dim);margin-right:8px;font-weight:700}
+
+@media(max-width:960px){
+  .calc,.split{grid-template-columns:1fr}
+  .toclist{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== TOPBAR ===================== -->
+<div class="topbar">
+  <div class="contact-strip">
+    <div class="contact-strip-inner">
+      <a class="contact-link" href="mailto:ponelson@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" fill="currentColor"/></svg>
+        <span>Email</span>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/ponelson/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V19h3.38V8.5ZM5.25 3A1.96 1.96 0 1 0 5.25 6.92 1.96 1.96 0 0 0 5.25 3ZM20.44 13.08c0-3.16-1.68-4.63-3.93-4.63-1.81 0-2.62.99-3.08 1.69V8.5h-3.38V19h3.38v-5.2c0-1.37.26-2.7 1.96-2.7 1.68 0 1.7 1.57 1.7 2.79V19h3.38l-.03-5.92Z" fill="currentColor"/></svg>
+        <span>LinkedIn</span>
+      </a>
+      <a class="contact-link" href="https://ponelson.github.io/pon/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.9 5.34.9 11.6c0 4.9 3.17 9.06 7.57 10.53.55.1.75-.24.75-.53v-1.86c-3.08.67-3.73-1.49-3.73-1.49-.5-1.29-1.23-1.63-1.23-1.63-1.01-.69.08-.67.08-.67 1.11.08 1.7 1.15 1.7 1.15.99 1.7 2.6 1.21 3.23.93.1-.72.39-1.21.7-1.49-2.46-.28-5.05-1.23-5.05-5.49 0-1.21.43-2.2 1.14-2.98-.11-.28-.5-1.41.11-2.94 0 0 .93-.3 3.05 1.14.88-.25 1.83-.37 2.77-.37.94 0 1.89.13 2.78.37 2.11-1.44 3.04-1.14 3.04-1.14.61 1.53.22 2.66.11 2.94.71.78 1.14 1.77 1.14 2.98 0 4.27-2.6 5.21-5.07 5.48.4.35.76 1.03.76 2.08v3.08c0 .3.2.64.76.53 4.39-1.47 7.56-5.63 7.56-10.53C23.1 5.34 18.27.5 12 .5Z" fill="currentColor"/></svg>
+        <span>GitHub</span>
+      </a>
+      <button class="themetoggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Toggle light or dark theme">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" fill="currentColor"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm0-13.5a1 1 0 0 1 1 1V6a1 1 0 1 1-2 0V4.5a1 1 0 0 1 1-1Zm0 15a1 1 0 0 1 1 1V21a1 1 0 1 1-2 0v-1.5a1 1 0 0 1 1-1ZM3.5 12a1 1 0 0 1 1-1H6a1 1 0 1 1 0 2H4.5a1 1 0 0 1-1-1Zm14.5 0a1 1 0 0 1 1-1h1.5a1 1 0 1 1 0 2H19a1 1 0 0 1-1-1ZM5.6 5.6a1 1 0 0 1 1.4 0l1.1 1.1a1 1 0 0 1-1.4 1.4L5.6 7a1 1 0 0 1 0-1.4Zm10.3 10.3a1 1 0 0 1 1.4 0l1.1 1.1a1 1 0 0 1-1.4 1.4l-1.1-1.1a1 1 0 0 1 0-1.4Zm2.5-10.3a1 1 0 0 1 0 1.4L17.3 8.1a1 1 0 1 1-1.4-1.4L17 5.6a1 1 0 0 1 1.4 0ZM8.1 15.9a1 1 0 0 1 0 1.4L7 18.4A1 1 0 0 1 5.6 17l1.1-1.1a1 1 0 0 1 1.4 0Z" fill="currentColor"/></svg>
+        <span id="themeLabel">Dark</span>
+      </button>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Oil From the Reservoir Up<span class="vtag">v1.0</span></div>
+      <div class="navlinks" id="navlinks"></div>
+      <button class="menubtn" id="menubtn" type="button" aria-label="Menu"><i></i><i></i><i></i></button>
+    </div>
+    <div class="drawer" id="drawer"></div>
+  </nav>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="orb a"></div><div class="orb b"></div>
+  <div class="wrap">
+    <div class="eyebrow">Field guide &nbsp;/&nbsp; <b>v1.0</b> &nbsp;&middot;&nbsp; 10 September 2026, 5:25 AM ET &nbsp;&middot;&nbsp; <span class="mono">build 2026-09-10T05:25-04:00</span></div>
+    <h1 class="h1">An oil well is a <em>declining annuity</em> you paid for in advance</h1>
+    <p class="lede">Everything peculiar about the oil business follows from that. You spend the money first, the production arrives on a curve that falls steeply and never stops falling, the price you receive is set by a global market and a handful of governments, and the only way to stay the same size is to keep drilling. This guide starts at zero and works through the whole chain — the rock, the well, the decline curve, the barrel's journey to a refinery, the economics, the accounting, the fiscal regimes, the promotional tricks, and the map as it stands in a year the Strait of Hormuz has been effectively closed since February.</p>
+    <div class="hero-actions">
+      <a class="cta" href="#orientation">Start at the beginning</a>
+      <a class="cta secondary" href="#glossary">Jump to the glossary</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== 1. ORIENTATION ===================== -->
+<section class="section" id="orientation" data-nav="Orientation">
+  <div class="wrap">
+    <div class="kicker">01 &nbsp;/&nbsp; Orientation</div>
+    <h2>What an oil company actually is</h2>
+    <p class="sub">A business that spends capital to convert an underground asset into a stream of cash that begins high, falls fast, and requires continuous reinvestment merely to stand still.</p>
+
+    <p class="tight">Oil shares one deep property with mining — the asset depletes as you produce it — and then diverges from it almost immediately. In a mine, the metal sits still and you go and get it; production rate is a choice made by the size of the plant. In an oil field, the hydrocarbon flows to you under pressure, and the rate at which it does so is set by physics you influence but do not control. That single difference produces the <b>decline curve</b>, which is the organising fact of the entire industry.</p>
+
+    <p class="tight">A modern shale well might produce 1,200 barrels a day in its first month and 300 barrels a day two years later. Nobody made that decision. Reservoir pressure fell, the fractures that connect the rock to the wellbore drained the volume nearest them, and the rate collapsed accordingly. Roughly half of a shale well's total lifetime output arrives within its first three years. Everything about how these companies are financed, valued and mismanaged follows from that shape.</p>
+
+    <p class="tight">The consequence for a company is the treadmill. If your base production declines at 30% a year, you must replace 30% of your output every year through new drilling just to report flat volumes. Growth requires replacing considerably more than that. This is why "free cash flow" was, for a decade, something the American shale industry discussed rather than produced, and why capital discipline became the sector's defining argument after 2020.</p>
+
+    <div class="panel invert">
+      <h3>The spine of the business</h3>
+      <p>Source rock → migration → trap → reservoir → lease → well → flow rate → decline curve → gross production → royalty and tax deductions → net revenue → operating costs → cash flow → reserve replacement → value.</p>
+      <p>Two links on that chain have no equivalent in mining. <b>Lease</b> sits early because in the United States, uniquely among major producers, private individuals own the minerals beneath their land — which created a royalty industry, a leasing industry and a body of law that shapes how every American well is financed. And <b>decline curve</b> sits in the middle because it converts a single capital decision into a fixed, physically determined revenue schedule.</p>
+    </div>
+
+    <h3 class="sub-h">Where the market sits today</h3>
+    <div class="grid g4" style="margin-top:18px">
+      <div class="stat"><div class="n">$101</div><div class="t">Brent crude, US$/bbl, 10 September 2026 — above $101 for the first time since May, up roughly 14% in a month and about 53% year on year</div></div>
+      <div class="stat"><div class="n">~$94</div><div class="t">WTI, US$/bbl, same date. The Brent-WTI spread is where US export economics live</div></div>
+      <div class="stat"><div class="n">$3.46</div><div class="t">Henry Hub natural gas, US$/MMBtu, EIA's 2026 average forecast — with a 33% rise projected for 2027 as LNG export capacity ramps</div></div>
+      <div class="stat"><div class="n">&lt;300M</div><div class="t">Barrels remaining in the US Strategic Petroleum Reserve as of August 2026, the lowest level since January 1983</div></div>
+    </div>
+    <p class="srcnote">Prices captured at build time and already moving. Sources are named in section 17. Nothing here is investment advice.</p>
+
+    <h3 class="sub-h">Four things that make oil unlike other industries</h3>
+    <div class="grid g4" style="margin-top:16px">
+      <div class="card"><div class="num">1</div><h3>The asset destroys itself on a schedule</h3><p>Not by management choice. Decline is a physical property of the reservoir, and it sets the reinvestment rate the business must sustain forever.</p></div>
+      <div class="card"><div class="num o">2</div><h3>The price is partly administered</h3><p>A group of governments has historically withheld several million barrels a day of capacity from the market. No industrial commodity has an equivalent. When that group fragments — as it did in 2026 — the price distribution changes shape.</p></div>
+      <div class="card"><div class="num g">3</div><h3>The product is not fungible</h3><p>"Oil" is hundreds of crudes with different densities and sulphur contents, each worth a different amount to each refinery. What you receive at the wellhead can differ from the screen price by ten dollars or more.</p></div>
+      <div class="card"><div class="num p">4</div><h3>The tax code was built to encourage it</h3><p>Intangible drilling costs, percentage depletion and production-sharing cost recovery are not loopholes discovered by clever accountants. They are deliberate policy, and they materially change the after-tax economics of every well.</p></div>
+    </div>
+
+    <div class="fieldnote"><b>How to use this.</b> Sections run in the order the value chain runs. Four of them carry working models — a well decline and economics calculator, a wellhead netback waterfall, and a fiscal regime comparison that shows how much of a barrel a government takes under a concession versus a production sharing contract. The glossary in section 15 is searchable and stands alone.</div>
+
+    <div class="toclist">
+      <a href="#geology"><b>02</b>The petroleum system</a>
+      <a href="#reserves"><b>03</b>Reserves and who signs</a>
+      <a href="#drilling"><b>04</b>Drilling and completion</a>
+      <a href="#decline"><b>05</b>Production and decline</a>
+      <a href="#midstream"><b>06</b>The barrel's journey</a>
+      <a href="#economics"><b>07</b>Project and corporate economics</a>
+      <a href="#costs"><b>08</b>Cost metrics</a>
+      <a href="#valuation"><b>09</b>Valuation</a>
+      <a href="#capital"><b>10</b>Ownership and financing</a>
+      <a href="#tax"><b>11</b>Fiscal regimes and tax</a>
+      <a href="#redflags"><b>12</b>Tricks and red flags</a>
+      <a href="#players"><b>13</b>Who's who</a>
+      <a href="#landscape"><b>14</b>The 2026 map</a>
+      <a href="#glossary"><b>15</b>Glossary</a>
+      <a href="#retain"><b>16</b>What to retain</a>
+      <a href="#sources"><b>17</b>Sources</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2. GEOLOGY ===================== -->
+<section class="section" id="geology" data-nav="The rock">
+  <div class="wrap">
+    <div class="kicker">02 &nbsp;/&nbsp; Petroleum geology</div>
+    <h2>Why the oil is there, and why it stayed</h2>
+    <p class="sub">A conventional oil field requires five independent things to have gone right. Miss one and there is nothing to find.</p>
+
+    <p class="tight">Oil is cooked plankton. Organic matter — mostly marine algae and plankton, occasionally terrestrial plant material — settles into an oxygen-poor basin where it is buried rather than eaten. Over millions of years, burial subjects it to heat and pressure, and the organic material converts to <b>kerogen</b> and then, in a specific temperature window, to liquid hydrocarbons. Too cool and nothing happens. Too hot and you get natural gas, and then, hotter still, nothing usable at all.</p>
+
+    <div class="grid g3" style="margin-top:18px">
+      <div class="card"><div class="num">1</div><h3>Source rock</h3><p>Organic-rich shale or marl that contains enough kerogen to generate hydrocarbons. Total organic carbon of 2% or more is generally required; the best sources run far higher.</p></div>
+      <div class="card"><div class="num">2</div><h3>Maturation</h3><p>The oil window sits roughly between 60&deg;C and 120&deg;C, typically two to four kilometres deep depending on the local geothermal gradient. Above it, immature kerogen. Below it, the gas window and eventually over-mature barren rock.</p></div>
+      <div class="card"><div class="num">3</div><h3>Migration</h3><p>Oil is less dense than the water saturating the rock, so it moves upward through permeable conduits until something stops it. Most generated oil never gets trapped and leaks to surface over geological time.</p></div>
+      <div class="card"><div class="num o">4</div><h3>Reservoir</h3><p>Rock with <b>porosity</b> — void space to hold fluid — and <b>permeability</b> — connected pores that let fluid flow. Sandstones and carbonates typically. Porosity is storage; permeability is deliverability, and permeability is what actually pays you.</p></div>
+      <div class="card"><div class="num o">5</div><h3>Seal and trap</h3><p>An impermeable barrier (shale, salt, anhydrite) in a geometry that holds the oil: an anticline, a fault block, a salt dome flank, a stratigraphic pinch-out, a reef. The trap must also have existed <i>before</i> migration, which is where many prospects fail.</p></div>
+      <div class="card"><div class="num r">6</div><h3>Preservation</h3><p>Everything above, followed by tens of millions of years without the trap being breached, tilted, biodegraded or cooked. The unconformable truth of exploration is that most complete petroleum systems produce nothing.</p></div>
+    </div>
+
+    <h3 class="sub-h">The unconventional revolution, stated precisely</h3>
+    <p class="tight">Shale changed the industry by removing two of the five requirements. In a shale play, the source rock <i>is</i> the reservoir. There is no migration and no trap — the oil never left the rock that generated it, which is why shale is often called a source-rock or resource play rather than a field. What makes it work is that the mature source interval is laterally extensive and continuous over enormous areas. You are not hunting for a trap; you know where the oil is over thousands of square miles.</p>
+    <p class="tight">The problem is permeability. Shale permeability is measured in nanodarcies — vanishingly small, hundreds of thousands of times tighter than a conventional reservoir. Oil in shale will not flow to a wellbore in economic quantity by itself. Two technologies solved that in combination: horizontal drilling, which places thousands of feet of wellbore inside a thin productive interval, and hydraulic fracturing, which creates artificial permeability by cracking the rock and propping the cracks open with sand.</p>
+
+    <div class="fieldnote"><b>The consequence nobody anticipated.</b> This converted exploration risk into manufacturing risk. A conventional wildcat either finds a field or does not — a binary outcome with perhaps a one-in-five success rate. A shale well almost always produces something; the question is whether it produces enough, at a cost low enough, to earn a return. The industry stopped being a search and became a repeatable industrial process with a cost curve. That is why shale responds to price in months where conventional projects respond in years, and why it briefly made the United States the marginal supplier to the world.</div>
+
+    <h3 class="sub-h">What comes out of the ground</h3>
+    <div class="tablewrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Stream</th><th>What it is</th><th>Why it matters commercially</th></tr></thead>
+        <tbody>
+          <tr><td>Crude oil</td><td>Liquid hydrocarbons at surface conditions, graded by API gravity (density) and sulphur content.</td><td>Light sweet crude commands a premium; heavy sour crude trades at a discount because fewer refineries can process it into high-value products.</td></tr>
+          <tr><td>Condensate</td><td>Very light liquid that is gaseous in the reservoir and condenses at surface. API above about 45 degrees.</td><td>Sells below crude in many markets despite being lighter — most refineries are not configured for it. A common source of realised-price disappointment.</td></tr>
+          <tr><td>NGLs</td><td>Natural gas liquids: ethane, propane, butane, isobutane, natural gasoline. Extracted from the gas stream at a processing plant.</td><td>Priced off separate markets, often as a fraction of WTI. Ethane can be "rejected" — left in the gas stream and sold as fuel — when its liquid price is too low.</td></tr>
+          <tr><td>Natural gas</td><td>Mostly methane. Associated (produced with oil) or non-associated (from a gas field).</td><td>Cannot be shipped without a pipeline or liquefaction, so gas prices are regional rather than global. Associated gas is a by-product the producer must dispose of — sometimes at negative prices.</td></tr>
+          <tr><td>Produced water</td><td>Formation brine, often several barrels per barrel of oil, rising over a well's life.</td><td>Pure cost. Handling, trucking and disposal-well capacity are real constraints, and disposal has been linked to induced seismicity in parts of the Permian.</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+
+    <div class="warning"><b>The 6:1 problem.</b> The industry converts gas to "barrels of oil equivalent" at six thousand cubic feet per barrel, which is roughly correct on <i>energy</i> content and badly wrong on <i>value</i>. At $100 oil and $3.50 gas, a barrel of oil is worth about five times a barrel-equivalent of gas. Any company reporting production in boe without a liquids split is obscuring the only number that matters. Read the mix, always.</div>
+  </div>
+</section>
+
+<!-- ===================== 3. RESERVES ===================== -->
+<section class="section" id="reserves" data-nav="Reserves">
+  <div class="wrap">
+    <div class="kicker">03 &nbsp;/&nbsp; Reserves and reporting</div>
+    <h2>Reserves are an accounting construct with a geological input</h2>
+    <p class="sub">The number on the cover of an annual report is the output of a pricing rule, a five-year clock and an engineer's signature — not a measurement of oil.</p>
+
+    <p class="tight">Mining separates resources from reserves by economic testing. Oil does something similar and gives it different names, with one crucial addition: American reserve reporting is governed by a rule that fixes the price you must use, which means reported reserves move when prices move even if not one molecule of geology has changed.</p>
+
+    <h3 class="sub-h">The confidence ladder</h3>
+    <div class="tablewrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Category</th><th>Confidence standard</th><th>What it means in practice</th></tr></thead>
+        <tbody>
+          <tr><td>1P / Proved</td><td>Reasonable certainty — conventionally at least 90% probability that actual recovery equals or exceeds the estimate.</td><td>The only category the SEC lets a US filer put in its financial statements. Split into <b>proved developed</b> (a well exists) and <b>proved undeveloped</b> (a well does not).</td></tr>
+          <tr><td>2P / Proved + probable</td><td>Best estimate — at least 50% probability of being met or exceeded.</td><td>The standard for most international and Canadian reporting, and what most acquisition models actually run on. Typically well above 1P.</td></tr>
+          <tr><td>3P / Proved + probable + possible</td><td>High estimate — at least 10% probability.</td><td>An upside case. Treat any valuation anchored on 3P with suspicion.</td></tr>
+          <tr><td>Contingent resources</td><td>Discovered but not currently commercial — no market, no infrastructure, no approved development.</td><td>Real hydrocarbons, no clear path to cash. The graveyard of stranded gas discoveries lives here.</td></tr>
+          <tr><td>Prospective resources</td><td>Undiscovered. An estimate of what might be found if you drilled.</td><td>Risked exploration inventory. Multiply by a geological chance of success before it means anything.</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+
+    <h3 class="sub-h">Three rules that catch people out</h3>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card">
+        <div class="meta"><span class="tag blue">SEC</span></div>
+        <h3>The 12-month average price rule</h3>
+        <p>Since 2009, US filers must book reserves using the unweighted arithmetic average of the first-day-of-month price for the preceding twelve months, held flat. Not the strip, not a forecast. Reserves therefore swell in a rising market and get written down in a falling one, on the same rock. Every year-end reserve headline is partly a price story.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag orange">SEC</span></div>
+        <h3>The five-year PUD rule</h3>
+        <p>A proved undeveloped location may generally only stay on the books if it is scheduled to be drilled within five years of first booking, supported by an adopted development plan the company has the capital and intent to execute. Booking a deep inventory of PUDs is easy; keeping it is not, and PUD revisions are among the more honest signals a company emits.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag green">Who signs</span></div>
+        <h3>Reserve auditors</h3>
+        <p>Independent engineering firms — Netherland Sewell, DeGolyer &amp; MacNaughton, Ryder Scott, Sproule, GLJ — prepare or audit reserve reports. There is no single named individual with personal liability equivalent to mining's Qualified Person, and the distinction between a full independent <i>evaluation</i> and a lighter <i>audit</i> or <i>process review</i> is worth reading in the footnote.</p>
+      </div>
+    </div>
+    <p class="srcnote">Outside the US, most reporting follows the SPE/WPC/AAPG/SPEE Petroleum Resources Management System (PRMS), which is probabilistic and forward-price based. Canada adds National Instrument 51-101, which requires forecast-price reserve reports and an independent evaluator. The two systems will give materially different numbers for the same asset — a fact that recurs in cross-border deal disputes.</p>
+
+    <h3 class="sub-h">The numbers derived from reserves</h3>
+    <p class="tight"><b>Standardized measure</b> and <b>PV-10</b> are the discounted present values of proved reserves computed under the SEC's rules, after and before income tax respectively, at a mandated 10% discount rate. Neither is a valuation. Both use a flat historical price, ignore probable reserves, ignore any well not yet booked as a PUD, and use a discount rate chosen by regulation rather than by the market. Analysts still quote them constantly, because they are the only reserve-based figures that are computed identically across every US filer.</p>
+    <p class="tight"><b>Reserve replacement ratio</b> is reserves added in a year divided by production in that year. Above 100% means the company grew its booked inventory. It is easily flattered: acquisitions count, and so do positive price revisions that arrive purely because the 12-month average rose. Insist on the organic, price-neutral number, which companies do disclose if you find the reconciliation table.</p>
+
+    <div class="warning"><b>Reserves are not inventory in the retail sense.</b> They are the subset of hydrocarbon that a specific pricing rule, a specific development plan and a specific engineer's judgment agree is recoverable. Change the price rule and the number changes. Change management's stated intent to drill and the number changes. This is not fraud; it is how the system is designed. The error is treating the output as a physical fact.</div>
+  </div>
+</section>
+
+<!-- ===================== 4. DRILLING ===================== -->
+<section class="section" id="drilling" data-nav="Drilling">
+  <div class="wrap">
+    <div class="kicker">04 &nbsp;/&nbsp; Drilling and completion</div>
+    <h2>How a well gets made</h2>
+    <p class="sub">Two operations with different costs, different contractors and different failure modes — and completion is now the larger and more consequential half.</p>
+
+    <p class="tight">A well is drilled and then it is completed, and the industry keeps the two words separate because they are separate businesses. Drilling creates the hole. Completion turns the hole into a producing conduit. In a modern shale well, completion accounts for roughly 55 to 70% of total well cost, which reverses the intuition most newcomers bring.</p>
+
+    <h3 class="sub-h">Drilling, in sequence</h3>
+    <div class="grid g4" style="margin-top:16px">
+      <div class="card"><div class="num">1</div><h3>Spud and surface hole</h3><p>The rig begins drilling. A large-diameter surface section is drilled and lined with steel casing cemented in place, isolating and protecting shallow freshwater aquifers. Regulators care about this section more than any other.</p></div>
+      <div class="card"><div class="num">2</div><h3>Intermediate section</h3><p>Drilling continues through zones of unstable rock or abnormal pressure, each isolated with further casing strings. Drilling mud circulates to carry cuttings up, cool the bit and — critically — hold back formation pressure. Losing that balance is how blowouts happen.</p></div>
+      <div class="card"><div class="num">3</div><h3>The curve and the lateral</h3><p>The bit is steered from vertical through a build section into horizontal, then drilled along the target interval. Laterals of 10,000 feet are routine; 15,000 and even 20,000 feet are increasingly common. Longer laterals spread fixed costs over more rock, which is where much of the last decade's cost improvement came from.</p></div>
+      <div class="card"><div class="num">4</div><h3>Total depth and casing</h3><p>Production casing is run and cemented across the lateral. The rig then moves on — often to a neighbouring well on the same pad, since moving a rig a hundred feet is far cheaper than moving it thirty miles.</p></div>
+    </div>
+
+    <h3 class="sub-h">Completion, in sequence</h3>
+    <p class="tight">A separate crew, separate equipment and separate money. The lateral is perforated in stages — dozens of them along a long lateral. Each stage is isolated and injected with water, chemicals and <b>proppant</b> (sand, mostly) at pressures high enough to crack the rock. The proppant lodges in the cracks and holds them open when pressure is released, creating the artificial permeability the reservoir lacks. Then the well is flowed back, the frac water returns, and production begins.</p>
+    <p class="tight">The variables that drive results are proppant loading per foot of lateral, fluid volume per foot, stage spacing and cluster design. "Bigger fracs" raised early rates enormously through the late 2010s. They also, in many cases, drained the same rock faster rather than draining more of it — which shows up as a steeper decline and a similar ultimate recovery, at higher cost.</p>
+
+    <div class="fieldnote"><b>Parent-child, and why infill drilling disappoints.</b> When a new well is drilled beside an existing producer, the older "parent" has already depleted pressure in the rock around it. The new "child" well frequently underperforms the parent, sometimes badly, and can damage the parent's production as well. Companies drill their best, most isolated locations first, so as a field develops the average well gets worse for reasons that have nothing to do with technique. Any type curve built on early parent wells and applied to a dense infill programme is overstating the future. This is the single most important technical criticism of shale inventory claims.</div>
+
+    <h3 class="sub-h">Vocabulary that recurs in earnings calls</h3>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card"><h3>DUC</h3><p>Drilled but uncompleted well. Cheap optionality — the drilling capital is already spent, so bringing a DUC online costs only completion money. A rising DUC count means capital has been spent without production arriving; a falling one flatters near-term volumes.</p></div>
+      <div class="card"><h3>Spud-to-TD and cycle time</h3><p>Days from starting the hole to reaching total depth, and the full cycle to first production. Falling cycle times are the clearest measure of genuine operational improvement — and they are also why fewer rigs now produce the same volume.</p></div>
+      <div class="card"><h3>Pad drilling</h3><p>Multiple wells drilled from a single surface location. Reduces facility, road and permitting cost per well, and enables simultaneous completion of several wells ("zipper fracs") that improves stimulation. Also means production arrives in lumps rather than continuously.</p></div>
+      <div class="card"><h3>Spacing</h3><p>The distance between laterals and between stacked benches. Too wide and you leave oil behind; too tight and wells cannibalise each other. Spacing assumptions determine claimed location counts, and location counts determine inventory life, and inventory life determines the valuation. Follow the chain.</p></div>
+      <div class="card"><h3>Frac hits</h3><p>A completion in one well communicating with a nearby producer, sometimes damaging it permanently. A real operating cost that appears in nobody's cost metric.</p></div>
+      <div class="card"><h3>Day rate versus turnkey</h3><p>How the drilling contractor is paid. Day rate places geological and mechanical risk on the operator; turnkey places it on the contractor at a higher price. Offshore day rates for high-specification rigs are the most cyclical price in the service sector.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5. DECLINE ===================== -->
+<section class="section" id="decline" data-nav="Decline">
+  <div class="wrap">
+    <div class="kicker">05 &nbsp;/&nbsp; Production and decline</div>
+    <h2>The curve that governs everything</h2>
+    <p class="sub">One equation, published in 1945, still does most of the forecasting work in the oil industry.</p>
+
+    <p class="tight">J.J. Arps observed that oil wells decline in mathematically regular ways and described three cases. Exponential decline falls by a constant percentage each period. Harmonic decline flattens quickly. Hyperbolic decline sits between them and fits most real wells, especially unconventional ones:</p>
+
+    <div class="eq">q(t) = q&#8336; &divide; (1 + b &middot; D&#8336; &middot; t)^(1/b)</div>
+
+    <p class="tight">Three parameters do all the work. <b>q&#8336;</b> is the initial rate. <b>D&#8336;</b> is the initial decline rate. <b>b</b> is the hyperbolic exponent that controls how quickly the decline itself decelerates — b = 0 gives pure exponential, b = 1 gives harmonic, and shale wells are commonly fitted with b between 0.8 and 1.5. That b-factor is the most consequential and most contested number in shale valuation, because a small increase in b adds a very long tail of low-rate production and therefore a great deal of claimed ultimate recovery.</p>
+
+    <p class="tight">Left alone, a hyperbolic curve with b above 1 produces infinite cumulative recovery, which is obviously wrong. Standard practice is to impose a <b>terminal decline</b> — typically 5 to 8% a year — and switch to exponential once the hyperbolic decline rate falls that low. Whether an operator applies a terminal decline, and at what rate, is a question worth asking of any type curve.</p>
+
+    <div class="panel" style="margin-top:20px">
+      <h3>Well decline and economics model</h3>
+      <p style="margin-bottom:16px">A single horizontal oil well. Move the parameters and watch the curve, the ultimate recovery and the return move together. The breakeven output solves for the oil price at which this well returns exactly its cost of capital.</p>
+      <div class="calc">
+        <div>
+          <div class="chartbox">
+            <svg id="dcChart" viewBox="0 0 640 260" role="img" aria-label="Production decline curve for a single oil well"></svg>
+          </div>
+          <div class="legend"><span><i class="b"></i>Daily oil rate</span><span><i class="o"></i>Cumulative recovery</span></div>
+          <div class="controls" style="margin-top:20px">
+            <div class="ctrl"><div class="lab"><span>Initial rate (IP)</span><b id="dcIpL">1,200 bo/d</b></div><input type="range" id="dcIp" min="100" max="3000" value="1200" step="50" aria-label="Initial production rate, barrels of oil per day"></div>
+            <div class="ctrl"><div class="lab"><span>First-year decline</span><b id="dcDiL">70%</b></div><input type="range" id="dcDi" min="20" max="90" value="70" step="1" aria-label="First-year effective decline, percent"></div>
+            <div class="ctrl"><div class="lab"><span>b-factor</span><b id="dcBL">1.10</b></div><input type="range" id="dcB" min="0" max="200" value="110" step="5" aria-label="Hyperbolic b factor, hundredths"></div>
+            <div class="ctrl"><div class="lab"><span>Terminal decline</span><b id="dcTdL">6%/yr</b></div><input type="range" id="dcTd" min="3" max="15" value="6" step="1" aria-label="Terminal decline rate, percent per year"></div>
+            <div class="ctrl"><div class="lab"><span>Well cost (D&amp;C)</span><b id="dcCostL">$8.5M</b></div><input type="range" id="dcCost" min="20" max="250" value="85" step="5" aria-label="Drilling and completion cost, hundred thousands"></div>
+            <div class="ctrl"><div class="lab"><span>Oil price (WTI)</span><b id="dcPxL">$75/bbl</b></div><input type="range" id="dcPx" min="30" max="140" value="75" step="1" aria-label="Oil price, dollars per barrel"></div>
+            <div class="ctrl"><div class="lab"><span>Differential to WTI</span><b id="dcDiffL">-$3.00/bbl</b></div><input type="range" id="dcDiff" min="-1500" max="500" value="-300" step="25" aria-label="Price differential, cents per barrel"></div>
+            <div class="ctrl"><div class="lab"><span>Net revenue interest</span><b id="dcNriL">75.0%</b></div><input type="range" id="dcNri" min="500" max="1000" value="750" step="5" aria-label="Net revenue interest, tenths of a percent"></div>
+            <div class="ctrl"><div class="lab"><span>Operating cost</span><b id="dcLoeL">$9.00/bbl</b></div><input type="range" id="dcLoe" min="200" max="3000" value="900" step="25" aria-label="Operating cost, cents per barrel"></div>
+            <div class="ctrl"><div class="lab"><span>Severance &amp; ad valorem tax</span><b id="dcSevL">7.0%</b></div><input type="range" id="dcSev" min="0" max="200" value="70" step="5" aria-label="Severance tax, tenths of a percent"></div>
+            <div class="ctrl"><div class="lab"><span>Discount rate</span><b id="dcDrL">10%</b></div><input type="range" id="dcDr" min="0" max="25" value="10" step="1" aria-label="Discount rate percent"></div>
+          </div>
+        </div>
+        <div class="out">
+          <div class="outrow"><span class="k">Year-1 average rate</span><span class="v" id="dcY1">—</span></div>
+          <div class="outrow"><span class="k">Rate at 24 months</span><span class="v" id="dcM24">—</span></div>
+          <div class="outrow"><span class="k">Decline, year 1 to year 2</span><span class="v" id="dcDecl">—</span></div>
+          <div class="outrow"><span class="k">First-year recovery</span><span class="v" id="dcCum1">—</span></div>
+          <div class="outrow"><span class="k">Estimated ultimate recovery (30 yr)</span><span class="v" id="dcEur">—</span></div>
+          <div class="outrow"><span class="k">Share of EUR in first 3 years</span><span class="v" id="dcFront">—</span></div>
+          <div class="outrow"><span class="k">Realised wellhead price</span><span class="v" id="dcReal">—</span></div>
+          <div class="outrow"><span class="k">Year-1 net cash flow</span><span class="v" id="dcCf1">—</span></div>
+          <div class="outrow"><span class="k">Payout period</span><span class="v" id="dcPayout">—</span></div>
+          <div class="outrow hi"><span class="k">Well NPV</span><span class="v" id="dcNpv">—</span></div>
+          <div class="outrow"><span class="k">Well IRR</span><span class="v" id="dcIrr">—</span></div>
+          <div class="outrow"><span class="k">Finding &amp; development cost</span><span class="v" id="dcFd">—</span></div>
+          <div class="outrow"><span class="k">Breakeven WTI at 10% return</span><span class="v" id="dcBe">—</span></div>
+        </div>
+      </div>
+      <div class="bar"><i id="dcBar"></i></div>
+      <p class="srcnote">Bar shows the first three years' share of total recovery — the front-loading that defines shale. Oil only; no gas or NGL revenue, no gathering deduction beyond the differential, no plugging and abandonment cost, no working-capital timing. Monthly cash flows, D&amp;C spent at time zero, thirty-year economic limit.</p>
+    </div>
+
+    <h3 class="sub-h">Type curves, and the leap of faith inside them</h3>
+    <p class="tight">A company does not forecast each well individually. It builds a <b>type curve</b> — an average expected profile for a class of wells in a defined area — and multiplies it by a location count. Both halves of that multiplication deserve scrutiny. The type curve is usually fitted to the wells drilled so far, which are the best wells, drilled in the best rock, at wide spacing. The location count depends on an assumed spacing that has repeatedly proved too tight in practice.</p>
+    <p class="tight">The honest way to read a type curve is to ask: which wells is this fitted to, over what period, at what spacing, with what b-factor and terminal decline, and how does the most recent vintage of wells actually compare? Operators publish enough to answer that. Very few investors ask.</p>
+
+    <h3 class="sub-h">Recovery factor, and why so much stays underground</h3>
+    <p class="tight">Conventional oil fields under natural drive recover perhaps 20 to 35% of the oil in place; with waterflooding and gas injection, good fields reach 40 to 60%. Shale recovers something in the range of <b>5 to 10%</b>. The rock holds enormous volumes and gives up very little of it, which is simultaneously the reason shale inventories look so large and the reason enhanced recovery in shale has been an area of persistent, so far mostly disappointing, experimentation.</p>
+    <p class="tight">Conventional reservoirs also age differently. Water encroaches, the <b>water cut</b> rises, and eventually a well produces fifty barrels of water for every barrel of oil and is shut in — not because the oil ran out but because handling the water costs more than the oil is worth. Gas-oil ratio rises as reservoir pressure drops below the bubble point and dissolved gas comes out of solution. Both are worth tracking in any producing asset: they are the clock.</p>
+  </div>
+</section>
+
+<!-- ===================== 6. MIDSTREAM ===================== -->
+<section class="section" id="midstream" data-nav="The barrel">
+  <div class="wrap">
+    <div class="kicker">06 &nbsp;/&nbsp; From wellhead to pump</div>
+    <h2>The barrel's journey, and where its value goes</h2>
+    <p class="sub">The price you see on a screen is not the price a producer receives. The gap between them is a business.</p>
+
+    <p class="tight">When a headline says oil is $101, it means a specific futures contract for a specific grade delivered at a specific place. Brent is light sweet crude priced for waterborne delivery in the North Sea. WTI is light sweet crude delivered at Cushing, Oklahoma. Dubai and Oman price the medium sour barrels that flow east. A producer in the Permian receives WTI at Cushing <i>minus</i> the cost and constraint of getting the barrel there, adjusted for whether the crude is exactly the specified quality.</p>
+
+    <div class="panel" style="margin-top:20px">
+      <h3>Wellhead netback</h3>
+      <p style="margin-bottom:16px">The waterfall from benchmark price to the cash a producer actually keeps per barrel.</p>
+      <div class="calc">
+        <div class="controls">
+          <div class="ctrl"><div class="lab"><span>Benchmark price (WTI)</span><b id="nbPxL">$95.00/bbl</b></div><input type="range" id="nbPx" min="3000" max="14000" value="9500" step="100" aria-label="Benchmark price, cents per barrel"></div>
+          <div class="ctrl"><div class="lab"><span>Location differential</span><b id="nbLocL">-$2.25/bbl</b></div><input type="range" id="nbLoc" min="-1200" max="200" value="-225" step="25" aria-label="Location differential, cents per barrel"></div>
+          <div class="ctrl"><div class="lab"><span>Quality adjustment (gravity &amp; sulphur)</span><b id="nbQualL">-$1.10/bbl</b></div><input type="range" id="nbQual" min="-1500" max="300" value="-110" step="10" aria-label="Quality adjustment, cents per barrel"></div>
+          <div class="ctrl"><div class="lab"><span>Gathering &amp; transport</span><b id="nbGathL">$2.40/bbl</b></div><input type="range" id="nbGath" min="0" max="1200" value="240" step="10" aria-label="Gathering and transport, cents per barrel"></div>
+          <div class="ctrl"><div class="lab"><span>Royalty burden</span><b id="nbRoyL">22.0%</b></div><input type="range" id="nbRoy" min="0" max="350" value="220" step="5" aria-label="Royalty burden, tenths of a percent"></div>
+          <div class="ctrl"><div class="lab"><span>Severance &amp; ad valorem</span><b id="nbSevL">7.0%</b></div><input type="range" id="nbSev" min="0" max="250" value="70" step="5" aria-label="Severance tax, tenths of a percent"></div>
+          <div class="ctrl"><div class="lab"><span>Lease operating expense</span><b id="nbLoeL">$8.50/bbl</b></div><input type="range" id="nbLoe" min="100" max="4000" value="850" step="25" aria-label="Lease operating expense, cents per barrel"></div>
+          <div class="ctrl"><div class="lab"><span>Water handling</span><b id="nbWtrL">$2.00/bbl</b></div><input type="range" id="nbWtr" min="0" max="1500" value="200" step="25" aria-label="Water handling cost, cents per barrel"></div>
+          <div class="ctrl"><div class="lab"><span>G&amp;A</span><b id="nbGaL">$2.20/bbl</b></div><input type="range" id="nbGa" min="0" max="1000" value="220" step="10" aria-label="General and administrative cost, cents per barrel"></div>
+        </div>
+        <div class="out">
+          <div class="outrow"><span class="k">Benchmark price</span><span class="v" id="nbO1">—</span></div>
+          <div class="outrow"><span class="k">Location differential</span><span class="v" id="nbO2">—</span></div>
+          <div class="outrow"><span class="k">Quality adjustment</span><span class="v" id="nbO3">—</span></div>
+          <div class="outrow"><span class="k">Gathering &amp; transport</span><span class="v" id="nbO4">—</span></div>
+          <div class="outrow"><span class="k"><b>Realised wellhead price</b></span><span class="v" id="nbO5">—</span></div>
+          <div class="outrow"><span class="k">Less royalty to mineral owners</span><span class="v" id="nbO6">—</span></div>
+          <div class="outrow"><span class="k">Less severance &amp; ad valorem tax</span><span class="v" id="nbO7">—</span></div>
+          <div class="outrow"><span class="k">Less lease operating expense</span><span class="v" id="nbO8">—</span></div>
+          <div class="outrow"><span class="k">Less water handling</span><span class="v" id="nbO9">—</span></div>
+          <div class="outrow"><span class="k">Less G&amp;A</span><span class="v" id="nbO10">—</span></div>
+          <div class="outrow hi"><span class="k">Cash netback per barrel</span><span class="v" id="nbNet">—</span></div>
+          <div class="outrow"><span class="k">Netback as share of benchmark</span><span class="v" id="nbPct">—</span></div>
+          <div class="outrow"><span class="k">Benchmark price at zero netback</span><span class="v" id="nbBe">—</span></div>
+        </div>
+      </div>
+      <p class="srcnote">Royalty is applied to the realised wellhead price, which is the usual US convention where the lease permits post-production deductions — a point of frequent litigation. On the default settings a producer with a 22% royalty burden keeps a little over half the benchmark price — and that is before a single dollar of drilling capital has been recovered.</p>
+    </div>
+
+    <h3 class="sub-h">Differentials, and what they are telling you</h3>
+    <p class="tight">A differential is the price gap between a local crude and a benchmark. It is composed of three things: the physical cost of transport, the quality difference, and — most informatively — scarcity of takeaway capacity. When Permian production outran pipeline capacity in 2018, the Midland differential blew out to more than $17 under WTI. When Canadian production outran export capacity, Western Canadian Select traded $50 under WTI at moments in 2018. Both are the market pricing a bottleneck, and both were repaired by pipelines.</p>
+    <p class="tight">This is why <b>firm transportation</b> — a contractual right to space on a pipeline, paid for whether used or not — is a genuine competitive asset, and why midstream companies with long-term contracted volumes are valued more like infrastructure than like energy.</p>
+
+    <h3 class="sub-h">Refining, in one page</h3>
+    <p class="tight">A refinery buys crude and sells products. Its margin is the <b>crack spread</b> — the value of the product slate minus the cost of the crude. The conventional shorthand is the 3-2-1 crack: three barrels of crude yielding two of gasoline and one of distillate. Distillate — diesel and jet — has been the tight product through 2026, with US inventories forecast to fall below 100 million barrels and stay under the five-year low well into 2027.</p>
+    <p class="tight">The economically interesting property of refining is that complexity pays. A simple refinery can only process light sweet crude into a modest product slate. A complex refinery with a coker and a hydrocracker can buy cheap heavy sour crude and upgrade it into the same high-value products, capturing the quality differential as margin. This is why the light-heavy spread matters enormously to refiners and to the producers of heavy crude, and why sanctions that reroute particular grades create such uneven winners.</p>
+
+    <div class="fieldnote"><b>Contango, backwardation and floating storage.</b> When futures trade above spot (contango), storing oil pays: you buy physical, sell forward, and collect the spread minus storage cost. When futures trade below spot (backwardation), holding inventory costs money and the market is telling you it wants barrels now. A steeply backwardated curve is one of the more reliable signals of genuine physical tightness — and the 2026 curve has spent most of the year in it.</div>
+  </div>
+</section>
+
+<!-- ===================== 7. ECONOMICS ===================== -->
+<section class="section" id="economics" data-nav="Economics">
+  <div class="wrap">
+    <div class="kicker">07 &nbsp;/&nbsp; Economics</div>
+    <h2>The well works. Does the company?</h2>
+    <p class="sub">Shale's central paradox: an industry of individually attractive projects that collectively consumed more capital than it returned for over a decade.</p>
+
+    <p class="tight">Run the model in section 5 at almost any price above $60 and a good Permian well looks excellent — payout inside two years, an internal rate of return north of 40%. Yet between roughly 2010 and 2019 the US shale sector as a whole generated persistently negative free cash flow. Both facts are true, and reconciling them is the most useful thing an investor can learn about the business.</p>
+
+    <h3 class="sub-h">Half-cycle versus full-cycle</h3>
+    <p class="tight">The well economics above are <b>half-cycle</b>: they count the cost of drilling and completing one well against the revenue that one well produces. They exclude the price paid for the acreage, the seismic and appraisal work that identified it, corporate overhead, the interest on the debt that funded it, the infrastructure built to move the production, and the eventual cost of plugging the well.</p>
+    <p class="tight"><b>Full-cycle</b> economics include all of it. The gap is large. A well showing a 45% half-cycle return can sit inside a company that never earns its cost of capital, because acreage was bought at a price that assumed those returns, and because the returns were reinvested into more wells rather than returned to owners.</p>
+
+    <div class="panel invert">
+      <h3>The treadmill, in numbers</h3>
+      <p>A company producing 100,000 barrels a day with a 35% corporate base decline must add 35,000 barrels a day of new production every year to report flat volumes. If each new well delivers 400 barrels a day in its first year, that is roughly 88 wells a year at, say, $8.5 million each — about $750 million of annual capital before any growth, before overhead, and before a dollar reaches a shareholder.</p>
+      <p>Now cut the price by a third. Cash flow falls faster than capital requirements do, because the decline rate is a property of the rock rather than of the price. This is the mechanism by which shale companies got into trouble, twice.</p>
+    </div>
+
+    <h3 class="sub-h">The metrics that connect a well to a company</h3>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card">
+        <div class="num">1</div>
+        <h3>F&amp;D cost</h3>
+        <p>Finding and development cost per barrel: capital spent divided by reserves added. The denominator is the problem — it can include acquisitions, price-driven revisions and optimistic PUD bookings. Ask for the three-year average, organic only, on a drill-bit basis.</p>
+      </div>
+      <div class="card">
+        <div class="num o">2</div>
+        <h3>Recycle ratio</h3>
+        <p>Netback per barrel divided by F&amp;D cost per barrel. Above 2.0x is generally considered healthy; below 1.0x means the company is destroying value with every barrel it replaces. The single most compressed measure of whether an E&amp;P works.</p>
+      </div>
+      <div class="card">
+        <div class="num g">3</div>
+        <h3>Maintenance capital</h3>
+        <p>The capital required to hold production flat. Rarely disclosed directly and easily estimated: base decline multiplied by production, divided by the first-year output of a typical new well, times well cost. Free cash flow above maintenance capital is the number that matters.</p>
+      </div>
+      <div class="card">
+        <div class="num g">4</div>
+        <h3>Corporate base decline</h3>
+        <p>The blended decline of everything the company already has producing. A conventional producer might run 6 to 10%; a shale-heavy one 30 to 40%. It determines the size of the treadmill and it is disclosed by good operators.</p>
+      </div>
+      <div class="card">
+        <div class="num p">5</div>
+        <h3>Inventory life</h3>
+        <p>Remaining drilling locations divided by the annual drilling pace. Ten years of Tier 1 inventory supports a premium; three years does not, regardless of current cash flow. Interrogate the spacing and the tier definitions behind the location count.</p>
+      </div>
+      <div class="card">
+        <div class="num p">6</div>
+        <h3>Reinvestment rate</h3>
+        <p>Capital expenditure as a percentage of operating cash flow. Above 100% the company is outspending; the post-2020 discipline consensus settled around 50 to 70%, with the balance going to dividends, buybacks and debt reduction. Watch for it creeping back up when prices rise.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Offshore and conventional: a different shape entirely</h3>
+    <p class="tight">A deepwater project inverts nearly every parameter. Capital is measured in billions rather than millions and is committed five to eight years before first oil. The decline is shallow — perhaps 5 to 10% a year — and the field produces for two or three decades. There is no ability to stop halfway, no meaningful optionality once the platform is ordered, and the entire economic case rests on a price forecast made a decade out.</p>
+    <p class="tight">The trade-off is stark: shale is short-cycle, low-margin per barrel, and can be turned off; deepwater is long-cycle, high-margin per barrel, and cannot. A portfolio of both is what an integrated major is actually selling. The lowest-cost barrels in the world, meanwhile, are neither — they are the conventional onshore fields of the Middle East, where lifting costs run in the low single digits per barrel and the constraint has always been political rather than economic.</p>
+  </div>
+</section>
+
+<!-- ===================== 8. COSTS ===================== -->
+<section class="section" id="costs" data-nav="Costs">
+  <div class="wrap">
+    <div class="kicker">08 &nbsp;/&nbsp; Cost metrics</div>
+    <h2>Which cost number are you looking at?</h2>
+    <p class="sub">Oil has no equivalent of the World Gold Council's standardised metric. Every company defines its own, and the definitions differ.</p>
+
+    <div class="tablewrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Metric</th><th>Captures</th><th>Where it misleads</th></tr></thead>
+        <tbody>
+          <tr><td>Lifting cost / LOE</td><td>Direct field operating expense per barrel: power, chemicals, workovers, field labour, water handling.</td><td>Excludes everything corporate and all capital. A very low LOE often just means high production volumes spreading fixed field costs, and it deteriorates as wells age and water cut rises.</td></tr>
+          <tr><td>Cash cost per boe</td><td>LOE plus gathering, production taxes, G&amp;A and cash interest.</td><td>The boe denominator. A gassy producer looks cheap per boe and earns far less per boe. Always check the liquids mix alongside.</td></tr>
+          <tr><td>F&amp;D cost</td><td>Capital divided by reserve additions.</td><td>Wildly gameable through what counts as an addition. Price revisions can produce a spectacular F&amp;D cost in a year the company drilled nothing exceptional.</td></tr>
+          <tr><td>Netback</td><td>Realised price less royalties, production taxes, transport and operating cost — cash margin per barrel.</td><td>The most useful field-level number, and it excludes capital entirely. A great netback on a well that cost $15 million to drill is not a great well.</td></tr>
+          <tr><td>Breakeven price</td><td>The price at which a well or project returns a stated hurdle rate.</td><td>Almost always quoted half-cycle, frequently on the best acreage, sometimes at a 0% hurdle rather than 10%, and usually assuming current service costs. Ask which of those four it is.</td></tr>
+          <tr><td>Free cash flow</td><td>Operating cash flow less all capital expenditure.</td><td>The only metric that cannot be defined away. Distorted for a year or two by underinvestment or by DUC drawdown; over a full cycle it is decisive.</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+
+    <div class="fieldnote"><b>Successful efforts versus full cost.</b> Two permitted accounting methods for capitalising exploration. Under <b>successful efforts</b>, dry hole costs are expensed immediately. Under <b>full cost</b>, they are capitalised into a pool and depleted against production regardless of whether the individual well worked. Full cost reports smoother, higher earnings in bad years and carries a mandatory <b>ceiling test</b> that forces large, sudden write-downs when prices fall. Two identical companies on different methods will report materially different earnings and book value, and neither is lying.</div>
+
+    <div class="warning"><b>The cost that appears nowhere.</b> Every well must eventually be plugged and the site restored. Asset retirement obligations sit on the balance sheet at a discounted estimate that is frequently below true cost, particularly for old, low-rate stripper wells whose owners have no capital. Orphan wells have become a significant public liability in Texas, Oklahoma, Pennsylvania and Alberta. When an E&amp;P sells its declining assets to a small private buyer, ask who ends up holding that obligation.</div>
+  </div>
+</section>
+
+<!-- ===================== 9. VALUATION ===================== -->
+<section class="section" id="valuation" data-nav="Valuation">
+  <div class="wrap">
+    <div class="kicker">09 &nbsp;/&nbsp; Valuation</div>
+    <h2>Putting a number on a declining stream</h2>
+    <p class="sub">Every approach is a discounted cash flow underneath. The differences are in which barrels you count and what price you assume.</p>
+
+    <p class="tight">The base method is <b>net asset value</b>: model each producing property's decline curve, add risked value for undeveloped locations, discount at 10%, subtract debt and capitalised overhead. In practice analysts build this in tiers — proved developed producing, proved undeveloped, then an increasingly discounted stack of probable, possible and unbooked inventory. Where a company's share price sits within that stack tells you exactly what the market is paying for.</p>
+
+    <div class="grid g4" style="margin-top:16px">
+      <div class="card"><h3>PV-10 / SEC NAV</h3><p>Standardised and comparable across US filers, and wrong on purpose — flat historical pricing, proved only. Use it as a floor and a comparability tool, never as a target price.</p></div>
+      <div class="card"><h3>Strip NAV</h3><p>The same model run at the forward futures curve rather than a flat price. Closer to what the asset could actually be hedged at, and the number most transactions are negotiated against.</p></div>
+      <div class="card"><h3>EV/EBITDAX</h3><p>The X is exploration expense, added back so successful-efforts and full-cost companies can be compared. A blunt instrument that ignores reserve life entirely — a 4x multiple on a five-year asset is expensive.</p></div>
+      <div class="card"><h3>EV per flowing barrel</h3><p>Enterprise value divided by current daily production. Fast, crude, and everywhere in deal commentary. Says nothing about decline rate, inventory depth or netback, which is to say it says nothing about the three things that matter.</p></div>
+    </div>
+
+    <h3 class="sub-h">Hedging, and reading through it</h3>
+    <p class="tight">Producers hedge to protect a drilling programme or to satisfy a lender, using swaps that fix a price, collars that bound a range, or puts that buy a floor. The consequence for an analyst is that <b>realised price</b> in a quarterly report may be substantially above or below the market price, and that difference is a financial position rather than an operating result. Strip the hedge gains out before comparing operating performance across companies or quarters. A company whose reported margins depend on hedges placed two years ago is telling you about its treasury desk, not its rock.</p>
+
+    <h3 class="sub-h">What actually drives an E&amp;P share price</h3>
+    <p class="tight">In descending order of practical importance: the oil price, the oil price, the inventory depth and quality behind current production, the base decline rate, the balance sheet, and the credibility of management's capital allocation. The first item dominates so heavily that many investors treat E&amp;P equity as a leveraged commodity position with an operational tracking error — which is unkind, largely accurate, and the reason royalty companies and integrated majors trade at premiums to pure-play producers.</p>
+  </div>
+</section>
+
+<!-- ===================== 10. CAPITAL ===================== -->
+<section class="section" id="capital" data-nav="Ownership">
+  <div class="wrap">
+    <div class="kicker">10 &nbsp;/&nbsp; Ownership and financing</div>
+    <h2>Who owns the barrel</h2>
+    <p class="sub">American oil rests on a legal peculiarity: private ownership of subsurface minerals. Almost nowhere else works this way, and it explains most of the industry's structure.</p>
+
+    <p class="tight">In the United States, whoever owns the mineral estate beneath a piece of land owns the hydrocarbons in it. Everywhere else of consequence — Saudi Arabia, Norway, Brazil, Nigeria, the United Kingdom, Canada's Crown lands — the state owns the subsurface and grants companies the right to extract. That single difference produced the American landman, the lease bonus, the mineral royalty industry, and a sector where thousands of small private owners each hold a slice of the resource.</p>
+
+    <h3 class="sub-h">The interests, and how they stack</h3>
+    <div class="tablewrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Interest</th><th>Pays costs?</th><th>Receives</th></tr></thead>
+        <tbody>
+          <tr><td>Mineral interest</td><td>No</td><td>The underlying ownership of the hydrocarbons, plus lease bonus and royalty when leased. Can be severed from the surface and traded independently, sometimes for generations.</td></tr>
+          <tr><td>Royalty interest</td><td>No</td><td>A share of production revenue free of drilling and operating cost — historically one-eighth (12.5%), now commonly 20 to 25% in competitive basins. The cleanest cash flow in the industry.</td></tr>
+          <tr><td>Overriding royalty (ORRI)</td><td>No</td><td>A royalty carved out of the working interest rather than the mineral estate, often granted to a geologist or landman who assembled the deal. Expires with the lease.</td></tr>
+          <tr><td>Working interest</td><td>Yes</td><td>The right and obligation to develop. Bears 100% of costs and receives production net of all royalties. Also the only interest that can deduct intangible drilling costs.</td></tr>
+          <tr><td>Net revenue interest (NRI)</td><td>—</td><td>Working interest multiplied by (1 minus total royalty burden). A 100% working interest under a 25% royalty is a 75% NRI. This is the number that actually multiplies the revenue line.</td></tr>
+          <tr><td>Carried interest</td><td>Not initially</td><td>A partner whose share of costs is paid by another party, usually until payout, in exchange for contributing acreage or accepting a promote. The standard structure of a farmout.</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+
+    <div class="fieldnote"><b>The one arithmetic error to avoid.</b> Working interest determines your share of the bill; net revenue interest determines your share of the cheque. A partner with a 50% working interest and a 37.5% NRI pays half of every cost and receives 37.5% of gross revenue. Confusing the two overstates cash flow by a third, and it is a mistake that appears in real models with real money behind them.</div>
+
+    <h3 class="sub-h">How wells get funded</h3>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card">
+        <div class="meta"><span class="tag blue">Debt</span></div>
+        <h3>Reserve-based lending</h3>
+        <p>The defining credit instrument of US independents. A bank syndicate lends against a <b>borrowing base</b> — a percentage of the discounted value of proved reserves — recalculated twice a year at the banks' own price deck. When prices fall, borrowing bases are cut, and companies must repay just as cash flow collapses. This procyclicality is why the 2015 and 2020 downturns produced so many bankruptcies so quickly.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag purple">Structured</span></div>
+        <h3>DrillCo and non-op capital</h3>
+        <p>A financial partner funds a defined drilling programme in exchange for a large working interest until it reaches an agreed return, after which its interest reverts sharply downward. Expensive capital that does not appear as debt — which is exactly why it appealed to companies with strained balance sheets.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag purple">Structured</span></div>
+        <h3>Volumetric production payments</h3>
+        <p>Selling a fixed volume of future production for cash today. A stream by another name, and treated in law as a sale of a real property interest rather than a loan — which has had consequences in bankruptcy that surprised several lenders.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag green">Equity</span></div>
+        <h3>Minerals and royalty companies</h3>
+        <p>Texas Pacific Land, Viper Energy, Sitio, Black Stone. They buy royalty and mineral interests, bear no drilling or operating cost, and let the operators around them fund growth. The oil sector's closest analogue to mining's Franco-Nevada, and they trade at similar premiums for similar reasons.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag green">Equity</span></div>
+        <h3>MLPs</h3>
+        <p>Master limited partnerships, mostly midstream, which avoid entity-level tax by distributing nearly all cash flow and issuing K-1s rather than 1099s. The structure suits stable fee-based pipelines and suits volatile upstream production badly, which the upstream MLP experiment demonstrated conclusively.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag orange">Contract</span></div>
+        <h3>The JOA</h3>
+        <p>The joint operating agreement governs every multi-party well: who operates, how costs are billed, what happens when a partner will not fund its share (the "non-consent" penalty, which can run to several hundred percent of the unpaid amount before the partner's interest reverts). Unglamorous, and decisive when a deal goes wrong.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 11. TAX ===================== -->
+<section class="section" id="tax" data-nav="Fiscal">
+  <div class="wrap">
+    <div class="kicker">11 &nbsp;/&nbsp; Fiscal regimes and tax</div>
+    <h2>How the government takes its share</h2>
+    <p class="sub">Roughly two-thirds of the world's oil is produced under a fiscal regime that never gives the company title to a barrel. The rest is taxed conventionally, and the US taxes it favourably.</p>
+
+    <h3 class="sub-h">The two great families</h3>
+    <p class="tight">A <b>concession</b> — also called a royalty/tax regime — grants the company the right to produce and to own the hydrocarbons at the wellhead. The state takes a royalty on gross production and then taxes the resulting profit. Simple, transparent, and the norm in the United States, Canada, the United Kingdom, Norway, Australia and much of Latin America.</p>
+    <p class="tight">A <b>production sharing contract</b> works differently. The state retains ownership of the resource; the company is a contractor. Production is divided into <b>cost oil</b>, which reimburses the contractor's capital and operating spending up to an annual ceiling, and <b>profit oil</b>, which is split between state and contractor according to a negotiated formula — often sliding with cumulative production, the contractor's return to date, or an R-factor measuring revenue against cost. The contractor then pays income tax on its profit oil. PSCs dominate in Indonesia, Malaysia, Egypt, Nigeria, Angola, Azerbaijan, Iraqi Kurdistan and much of Asia and Africa.</p>
+    <p class="tight">A third family, the <b>service contract</b>, pays the contractor a fee per barrel with no exposure to price at all. Iraq's post-2009 technical service contracts are the largest example. Low risk, low reward, and the reason several majors have quietly reduced their Iraqi exposure.</p>
+
+    <div class="panel" style="margin-top:20px">
+      <h3>Government take calculator</h3>
+      <p style="margin-bottom:16px">The same barrel, the same costs, under both regimes. Government take is expressed as the state's share of divisible income — revenue less recoverable cost — which is the standard basis for comparing fiscal systems internationally.</p>
+      <div class="calc">
+        <div class="controls">
+          <div class="ctrl"><div class="lab"><span>Oil price</span><b id="ftPxL">$95.00/bbl</b></div><input type="range" id="ftPx" min="2000" max="15000" value="9500" step="250" aria-label="Oil price, cents per barrel"></div>
+          <div class="ctrl"><div class="lab"><span>Recoverable cost per barrel</span><b id="ftCostL">$28.00/bbl</b></div><input type="range" id="ftCost" min="500" max="8000" value="2800" step="100" aria-label="Recoverable cost, cents per barrel"></div>
+          <div class="ctrl"><div class="lab"><span>Royalty rate</span><b id="ftRoyL">10.0%</b></div><input type="range" id="ftRoy" min="0" max="300" value="100" step="5" aria-label="Royalty rate, tenths of a percent"></div>
+          <div class="ctrl"><div class="lab"><span>Cost recovery ceiling (PSC)</span><b id="ftCeilL">60%</b></div><input type="range" id="ftCeil" min="20" max="100" value="60" step="5" aria-label="Cost recovery ceiling percent"></div>
+          <div class="ctrl"><div class="lab"><span>Government profit oil share (PSC)</span><b id="ftSplitL">65%</b></div><input type="range" id="ftSplit" min="20" max="90" value="65" step="1" aria-label="Government profit oil share percent"></div>
+          <div class="ctrl"><div class="lab"><span>Corporate income tax rate</span><b id="ftTaxL">35%</b></div><input type="range" id="ftTax" min="0" max="85" value="35" step="1" aria-label="Corporate income tax rate percent"></div>
+        </div>
+        <div class="out">
+          <div class="outrow"><span class="k"><b>Production sharing contract</b></span><span class="v" id="ftBlank1"></span></div>
+          <div class="outrow"><span class="k">Royalty to state</span><span class="v" id="ftPsc1">—</span></div>
+          <div class="outrow"><span class="k">Cost oil recovered this period</span><span class="v" id="ftPsc2">—</span></div>
+          <div class="outrow"><span class="k">Unrecovered cost carried forward</span><span class="v" id="ftPsc3">—</span></div>
+          <div class="outrow"><span class="k">Profit oil to state</span><span class="v" id="ftPsc4">—</span></div>
+          <div class="outrow"><span class="k">Income tax on contractor profit oil</span><span class="v" id="ftPsc5">—</span></div>
+          <div class="outrow hi"><span class="k">Government take, PSC</span><span class="v" id="ftPscTake">—</span></div>
+          <div class="outrow"><span class="k">Contractor cash per barrel, PSC</span><span class="v" id="ftPscNet">—</span></div>
+          <div class="outrow"><span class="k"><b>Concession (royalty and tax)</b></span><span class="v" id="ftBlank2"></span></div>
+          <div class="outrow"><span class="k">Royalty to state</span><span class="v" id="ftCon1">—</span></div>
+          <div class="outrow"><span class="k">Income tax</span><span class="v" id="ftCon2">—</span></div>
+          <div class="outrow hi"><span class="k">Government take, concession</span><span class="v" id="ftConTake">—</span></div>
+          <div class="outrow"><span class="k">Contractor cash per barrel, concession</span><span class="v" id="ftConNet">—</span></div>
+        </div>
+      </div>
+      <p class="srcnote">Single-period, single-barrel simplification. Real PSCs carry unrecovered costs forward with interest, apply sliding scales, ring-fence by block, include state participation and domestic market obligations, and often let the state pay the contractor's income tax out of its own profit share. Note the structural point the model does show: because the cost recovery ceiling caps how fast a contractor gets its money back, a PSC in a high-cost, low-price environment can push effective government take far above the headline split.</p>
+    </div>
+
+    <h3 class="sub-h">United States: the most generous upstream tax code in the developed world</h3>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card">
+        <div class="num">1</div>
+        <h3>Intangible drilling costs</h3>
+        <p>Under IRC §263(c), a working interest owner may elect to deduct <b>intangible drilling costs</b> in full in the year incurred rather than capitalising them. IDCs are the non-salvageable portion of a well — labour, rig time, drilling fluids, cementing, fuel, most services — and typically run 60 to 85% of a well's total cost. Tangible equipment is depreciated separately. Integrated producers face partial limits; independents generally do not. The election also creates an AMT preference item and triggers ordinary-income recapture under §1254 on a later sale.</p>
+      </div>
+      <div class="card">
+        <div class="num">2</div>
+        <h3>Percentage depletion</h3>
+        <p>Independent producers and royalty owners may deduct <b>15% of gross income</b> from a property, subject to a net income limitation and a production ceiling that excludes the majors. Like its mining equivalent, it is not limited to capital actually invested — a long-producing property can generate cumulative depletion deductions exceeding the original cost basis many times over. This is the reason a mineral royalty is such a tax-efficient asset to hold.</p>
+      </div>
+      <div class="card">
+        <div class="num o">3</div>
+        <h3>Severance and ad valorem taxes</h3>
+        <p>State-level, levied on production value at the wellhead. Texas charges 4.6% on oil and 7.5% on gas; North Dakota, Oklahoma, New Mexico and Wyoming each differ, several with reduced rates for stripper or enhanced-recovery wells. Add county ad valorem property tax on reserves in the ground and the combined state burden commonly runs 6 to 9% of revenue — a real and often-overlooked cost that varies materially by basin.</p>
+      </div>
+      <div class="card">
+        <div class="num o">4</div>
+        <h3>Federal royalty rates</h3>
+        <p>The Inflation Reduction Act of 2022 raised the onshore federal royalty rate from the century-old 12.5% to 16.67% and eliminated non-competitive leasing. The One Big Beautiful Bill Act of July 2025 reversed the rate back toward 12.5% for new leases and expanded lease sale requirements. Federal acreage is a modest share of US production overall and a large share in New Mexico's Delaware Basin, where the change is worth real money.</p>
+      </div>
+    </div>
+
+    <div class="warning"><b>Why the tax treatment changes behaviour, not just the tax bill.</b> Expensing 80% of a well in year one means a high-bracket working interest participant recovers roughly a third of the investment immediately through tax savings, which lowers the effective at-risk capital and therefore the breakeven. That is the intended policy effect, and it is also why direct drilling programmes are marketed so aggressively to high-income individuals every fourth quarter. The deduction is real. It does not make a bad well good, and the offering documents describing these programmes as tax-advantaged are frequently more rigorous about the tax than about the geology.</div>
+
+    <h3 class="sub-h">Elsewhere</h3>
+    <p class="tight">Norway taxes upstream petroleum at 78% — 22% corporate plus a 56% special petroleum tax — but refunds the tax value of exploration costs in cash to companies in a loss position, which is why Norway sustains an unusually active exploration sector despite a punitive headline rate. The United Kingdom layered an Energy Profits Levy onto ring-fenced corporation tax in 2022, pushing the marginal rate to 75% and triggering a visible collapse in North Sea investment commitments. Both illustrate the same principle: what matters is not the headline rate but the interaction of rate, allowances, ring-fencing and loss relief, and a high-rate system with generous uplift can attract more capital than a low-rate system without it.</p>
+  </div>
+</section>
+
+<!-- ===================== 12. RED FLAGS ===================== -->
+<section class="section" id="redflags" data-nav="Red flags">
+  <div class="wrap">
+    <div class="kicker">12 &nbsp;/&nbsp; Tricks of the trade</div>
+    <h2>The promotional playbook</h2>
+    <p class="sub">Oil promotion is less about fabricating a discovery than about presenting a real well as if it were a representative one.</p>
+
+    <div class="grid g2" style="margin-top:20px">
+      <div class="card">
+        <div class="meta"><span class="tag red">Well results</span></div>
+        <h3>The 24-hour IP rate</h3>
+        <p>A peak flow rate measured over one day, or even a few hours, and reported as though it characterised the well. Rates can be inflated by flowing back aggressively on a large choke — which damages the reservoir and lowers ultimate recovery. IP30 and IP90 are far more informative, and a company that publishes only the 24-hour number has chosen the least meaningful one available.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag red">Well results</span></div>
+        <h3>Normalised per-thousand-foot rates</h3>
+        <p>"Best well in the basin on a per-1,000-foot basis" is a construction that lets a mediocre long lateral beat an excellent short one. Normalisation is legitimate for comparing completion designs and misleading for comparing economics, because you paid for the whole lateral.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag red">Forecasting</span></div>
+        <h3>b-factor inflation</h3>
+        <p>The quietest and most valuable trick in shale. Raising the hyperbolic exponent from 1.0 to 1.4 barely changes the first two years of a forecast and adds a great deal to the twenty-year tail, inflating estimated ultimate recovery and every economic metric derived from it. Ask what b-factor and what terminal decline the type curve uses, and whether the tail has ever actually been observed in that formation.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag red">Forecasting</span></div>
+        <h3>Type curves fitted to parent wells</h3>
+        <p>Early wells are drilled in the best rock at wide spacing into virgin pressure. Applying their average to a dense infill programme ignores parent-child degradation entirely. Compare the most recent well vintage against the type curve, by year drilled — good operators publish this and the comparison is often unflattering.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag orange">Inventory</span></div>
+        <h3>Location counts built on optimistic spacing</h3>
+        <p>Halving assumed well spacing doubles the location count and doubles claimed inventory life without adding an acre. The industry has repeatedly downgraded spacing assumptions after drilling them. Ask how many of the claimed locations have been tested at the assumed density, and how those tests performed.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag orange">Inventory</span></div>
+        <h3>Tier definitions that move</h3>
+        <p>"Ten years of Tier 1 inventory" is only as good as the company's private definition of Tier 1, which is not standardised and which tends to loosen as the genuinely good rock is consumed. Track the stated breakeven of the inventory over successive investor presentations.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag orange">Reserves</span></div>
+        <h3>Price-driven reserve growth</h3>
+        <p>A 40% increase in proved reserves in a year the company drilled normally is a pricing artefact of the SEC's twelve-month average rule, not a discovery. The reconciliation table separates revisions from extensions, discoveries and acquisitions. Read the table, not the headline.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag orange">Reserves</span></div>
+        <h3>PUDs that never get drilled</h3>
+        <p>Proved undeveloped locations must be scheduled within five years and supported by a plan the company can fund. Persistent PUD removals — as opposed to conversions — mean the inventory was never real. Track the PUD conversion rate over three years.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag purple">Reporting</span></div>
+        <h3>The boe denominator</h3>
+        <p>Reporting growth in barrels of oil equivalent while the mix shifts toward gas is growth in volume and shrinkage in revenue. At $95 oil and $3.50 gas, a boe of gas is worth about a fifth of a boe of oil. Insist on the three-stream split: oil, NGL, gas.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag purple">Reporting</span></div>
+        <h3>Half-cycle breakevens</h3>
+        <p>"We're profitable at $38" almost always means drilling-and-completion cost only, on the best acreage, ignoring land, overhead, interest and the cost of replacing the barrel. Full-cycle corporate breakevens including the dividend are typically twenty to thirty dollars higher.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag blue">Financial</span></div>
+        <h3>Growth funded by the balance sheet</h3>
+        <p>Production growth is trivially easy to buy with debt or equity. Judge it per debt-adjusted share, on a three-year view, alongside the reinvestment rate. A company outspending cash flow to grow volumes is converting shareholder capital into press releases.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag blue">Financial</span></div>
+        <h3>Hedges flattering the operating result</h3>
+        <p>A realised price well above the market means the treasury desk performed, not the assets. Strip hedge gains before comparing margins, and check when the hedge book rolls off — the quarter it does is the quarter you see the real business.</p>
+      </div>
+    </div>
+
+    <div class="panel invert">
+      <h3>Two questions that do most of the work</h3>
+      <p><b>Is this half-cycle or full-cycle?</b> Nearly every impressive number in oil promotion is half-cycle. Ask what it excludes and add it back yourself.</p>
+      <p><b>What does the most recent vintage look like?</b> Averages across all wells ever drilled flatter a maturing asset. The last twelve months of wells, compared against the type curve they were supposed to deliver, is the honest picture — and it is almost always available.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 13. PLAYERS ===================== -->
+<section class="section" id="players" data-nav="Players">
+  <div class="wrap">
+    <div class="kicker">13 &nbsp;/&nbsp; Industry structure</div>
+    <h2>Who's who</h2>
+    <p class="sub">Listed oil companies are a minority of the industry. The largest producers answer to governments, not shareholders.</p>
+
+    <div class="grid g3" style="margin-top:18px">
+      <div class="card">
+        <div class="meta"><span class="tag orange">Majority of reserves</span></div>
+        <h3>National oil companies</h3>
+        <p>Saudi Aramco, ADNOC, KPC, NIOC, PetroChina and Sinopec, Petrobras, Pemex, Sonatrach, NNPC, QatarEnergy, Rosneft. Collectively they hold the great majority of the world's proved reserves and the entirety of meaningful spare capacity. Aramco's Ghawar alone has produced more oil than most countries. Any market model that starts with listed companies has already missed most of the supply.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag blue">Integrated</span></div>
+        <h3>The supermajors</h3>
+        <p>ExxonMobil, Chevron, Shell, TotalEnergies, BP, ConocoPhillips (upstream only). Vertically integrated across upstream, refining, chemicals and trading, which smooths the cycle — refining margins tend to widen when crude falls. Exxon absorbed Pioneer for about $60 billion in 2023; Chevron closed its $53 billion Hess acquisition in July 2025, principally for the Guyana position.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag green">Upstream</span></div>
+        <h3>Large independents</h3>
+        <p>EOG, Occidental, Devon, Diamondback, Coterra, Apache, Expand Energy (gas). Pure upstream, no refining, and therefore an undiluted expression of the commodity. Diamondback paid $26 billion for Endeavor; ConocoPhillips took Marathon for $22.5 billion. The Permian is now dominated by a handful of names in a way it was not five years ago.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag green">Upstream</span></div>
+        <h3>Small caps and privates</h3>
+        <p>Hundreds of them, plus a large private-equity-backed cohort funded by EnCap, NGP, Quantum and others. The private sector's role is to buy what the majors discard, drill it, and sell it back — and increasingly to operate the mature, low-rate assets nobody else wants, which raises real questions about who ultimately pays to plug them.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag purple">Capital</span></div>
+        <h3>Minerals and royalties</h3>
+        <p>Texas Pacific Land, Viper Energy, Sitio Royalties, Black Stone Minerals, Kimbell. No wells, no costs, no drilling risk — just a perpetual share of whatever the operators around them produce, with percentage depletion sheltering a slice of it. Structurally the best business in oil, priced accordingly.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag purple">Capital</span></div>
+        <h3>Traders</h3>
+        <p>Vitol, Trafigura, Glencore, Gunvor, Mercuria, plus the majors' own desks. They move roughly a third of the world's seaborne crude, arbitrage grade and geography, own storage and refineries, and profit from exactly the dislocation that has defined 2026. Glencore's first-half adjusted EBITDA rose 86%, substantially on energy trading.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag red">Services</span></div>
+        <h3>Oilfield services</h3>
+        <p>SLB, Halliburton, Baker Hughes, Weatherford, NOV, ProPetro, Liberty. They do the drilling and the fracturing; the operator supplies the acreage and the capital. Their pricing is the operators' cost inflation, which is why service cost deflation assumptions inside a breakeven estimate deserve scepticism.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag red">Services</span></div>
+        <h3>Drillers and rigs</h3>
+        <p>Transocean, Valaris, Noble, Seadrill offshore; Patterson-UTI, Helmerich &amp; Payne, Nabors onshore. Day rates for high-specification offshore rigs are among the most violently cyclical prices in any industry.</p>
+      </div>
+      <div class="card">
+        <div class="meta"><span class="tag blue">Downstream</span></div>
+        <h3>Midstream and refiners</h3>
+        <p>Enterprise Products, Energy Transfer, Kinder Morgan, Williams, Plains on the midstream side; Marathon Petroleum, Valero, Phillips 66, Reliance, Shell and Sinopec on refining. Midstream is a toll business valued on contracted volumes; refining is a spread business valued on crack margins and configuration complexity.</p>
+      </div>
+    </div>
+
+    <div class="fieldnote"><b>The institutions that set the frame.</b> OPEC and its wider OPEC+ grouping coordinate supply. The International Energy Agency, created after the 1973 embargo, holds strategic stock obligations and publishes the consuming world's demand view. The EIA supplies the US data everyone models from. And the price assessment agencies — Platts and Argus — determine what "the price" actually is for physical cargoes, which makes their methodology decisions quietly consequential.</div>
+  </div>
+</section>
+
+<!-- ===================== 14. LANDSCAPE ===================== -->
+<section class="section" id="landscape" data-nav="2026 map">
+  <div class="wrap">
+    <div class="kicker">14 &nbsp;/&nbsp; The present moment</div>
+    <h2>Where the industry stands in September 2026</h2>
+    <p class="sub">This is a war year. Almost everything else in the market is downstream of one waterway.</p>
+
+    <h3 class="sub-h">1. Hormuz</h3>
+    <p class="tight">A US-Israel military campaign against Iran began in late February 2026. Iran's response effectively closed the Strait of Hormuz, through which roughly a fifth of global oil and LNG supply passed in peacetime. Shipping largely stopped as insurers withdrew war-risk cover; Gulf exporters shut in production as regional storage filled. Brent went from about $72 the day before the strikes to $91 within a week, $109, and an intraday peak near $138 on 7 April — dated assessments briefly printed past $140, the highest since 2008. Total OPEC+ production fell from 42.77 million barrels a day in February to 33.13 million in May.</p>
+    <p class="tight">The subsequent six months have been a negotiation conducted through tanker attacks. A US-Iran memorandum on reopening the strait was signed on 17 June and collapsed within weeks over which routes vessels could use. Prices retraced to roughly $72 in early July on ceasefire optimism, then climbed steadily as talks stalled: $84 in mid-August, $89 by late August, and above $101 on 9 September — the first time since May — after the US destroyed five Iranian tankers, Houthi attacks forced temporary suspensions at Saudi facilities, and Ukrainian drones struck Novorossiysk, Russia's principal Black Sea terminal.</p>
+    <p class="tight">The EIA does not expect Middle East production to approach pre-conflict levels until early 2027 and forecasts Brent averaging around $90 in the second half of 2026, falling to $74 in 2027 as supply returns and inventories rebuild. Goldman Sachs carries $85 for December 2026 and warns that Brent could exceed $120 in 2027 if Gulf output stays four million barrels a day below prewar levels — explicitly not its base case. Global inventories have drawn by an estimated 400 million barrels this year. The US Strategic Petroleum Reserve is below 300 million barrels, its lowest since January 1983, which means the traditional Western policy response is largely spent.</p>
+
+    <div class="warning"><b>Read every 2026 forecast with its date attached.</b> The consensus for full-year Brent moved from the mid-$50s in mid-2025 to $90–100 by mid-2026. Goldman was at $56 for 2026 as recently as July 2025. This is not a criticism of forecasters; it is a demonstration that oil price forecasts are conditional on geopolitical assumptions that can invert in a week, and that any valuation resting on a long-run price deck should be tested against a wide range rather than defended.</div>
+
+    <h3 class="sub-h">2. OPEC is smaller than it was</h3>
+    <p class="tight">The United Arab Emirates left OPEC effective 1 May 2026, taking with it a member accounting for more than 11% of the group's 2025 production and a substantial share of its spare capacity. Estimates put the reduction in OPEC spare capacity from around 3.8 to about 2.5 million barrels a day by 2027. The UAE has said it will raise output in the second half of the year and targets 5 million barrels a day of capacity by 2027.</p>
+    <p class="tight">The significance is structural rather than immediate. Spare capacity is the shock absorber that has damped oil price volatility for fifty years, and it is now both smaller and more concentrated in Saudi Arabia. A market with less buffer and one dominant holder of what remains has a fatter tail in both directions — which is exactly what 2026 has delivered.</p>
+
+    <h3 class="sub-h">3. American shale did not rescue the market</h3>
+    <p class="tight">The traditional expectation — high prices bring US supply — worked partially and slowly. US output hit a record 13.93 million barrels a day in April 2026, up about 216,000 barrels from March, as Permian operators accelerated. But rig counts fell during periods when oil traded above $90, and Dallas Fed survey respondents were explicit about why: the price move was understood as a war premium that might vanish, and nobody wanted to commit multi-year capital to a two-week signal.</p>
+    <p class="tight">Underneath the volatility sits a slower structural problem. Tier 1 Permian acreage is maturing. The average Midland and Delaware operator saw roughly a 6% decline in oil productivity per well in 2025, with several large operators posting double-digit declines. Jefferies has forecast about 66,000 barrels a day of Permian growth for 2026 — nearly all of total US shale growth — with the Bakken and Eagle Ford in outright decline. The EIA expects Lower 48 onshore production to fall by roughly 170,000 barrels a day this year and Permian output to decline about 1% in 2027. The shale swing producer still swings, but with less amplitude than the market assumes.</p>
+
+    <h3 class="sub-h">4. Gas and LNG are on a different clock</h3>
+    <p class="tight">Natural gas has been the calm half of the industry. The EIA's forecast has Henry Hub averaging around $3.46/MMBtu in 2026, roughly flat on 2025, then rising about a third to near $4.59 in 2027 as three major export facilities — Plaquemines, Corpus Christi Stage 3 and Golden Pass — ramp toward full operation and pull feedgas demand ahead of supply growth. US gas inventories are on track to end the injection season around 3,969 Bcf, about 5% above the five-year average.</p>
+    <p class="tight">The demand story underneath is new. US electricity sales are forecast at record levels in both 2026 and 2027, driven by data centre construction and industrial demand. Gas is the marginal fuel for much of that load. For the first time in a long while, the American gas thesis rests on domestic power demand as much as on exports.</p>
+
+    <h3 class="sub-h">5. Consolidation, then a pause</h3>
+    <p class="tight">The 2023–25 merger wave — Exxon-Pioneer at roughly $60 billion, Chevron-Hess at $53 billion, Diamondback-Endeavor at $26 billion, ConocoPhillips-Marathon at $22.5 billion, Chesapeake-Southwestern forming Expand Energy — removed several major names from the market and left the Permian concentrated among a handful of operators. Deal volumes then fell for seven consecutive half-year periods, because those transactions raised asset prices and eliminated most of the attractive targets. Attention has shifted from Permian land to international long-life assets: Guyana, LNG supply, and offshore positions with two-decade horizons rather than two-year ones.</p>
+
+    <div class="fieldnote"><b>What this means for reading a company today.</b> Three questions carry most of the weight. How much of its realised price is a war premium that could evaporate on a signed agreement? How deep is its remaining Tier 1 inventory, measured honestly at current spacing? And how much of its balance sheet strength was built during a period of prices that its own long-run deck does not assume?</div>
+  </div>
+</section>
+
+<!-- ===================== 15. GLOSSARY ===================== -->
+<section class="section" id="glossary" data-nav="Glossary">
+  <div class="wrap">
+    <div class="kicker">15 &nbsp;/&nbsp; Vocabulary</div>
+    <h2>The words, defined</h2>
+    <p class="sub">Filter by category or search. Oil jargon is dense, mostly precise, and occasionally deliberately vague — the glossary notes which is which.</p>
+
+    <div style="max-width:520px;margin:22px 0 18px">
+      <input type="search" id="gSearch" placeholder="Search terms and definitions&hellip;" aria-label="Search the glossary">
+    </div>
+    <div class="chiprow" id="gChips">
+      <button class="chip active" data-filter="all" type="button">All</button>
+      <button class="chip" data-filter="geo" type="button">Geology</button>
+      <button class="chip" data-filter="res" type="button">Reserves</button>
+      <button class="chip" data-filter="drl" type="button">Drilling</button>
+      <button class="chip" data-filter="prd" type="button">Production</button>
+      <button class="chip" data-filter="mid" type="button">Midstream &amp; refining</button>
+      <button class="chip" data-filter="eco" type="button">Economics</button>
+      <button class="chip" data-filter="fin" type="button">Finance &amp; ownership</button>
+      <button class="chip" data-filter="fis" type="button">Fiscal &amp; tax</button>
+      <button class="chip" data-filter="mkt" type="button">Market</button>
+    </div>
+    <div class="gcount" id="gCount"></div>
+
+    <div class="gwrap" id="gWrap">
+
+      <div class="gitem" data-cat="geo"><h4>Petroleum system <em>Geology</em></h4><p>The complete set of elements required for an accumulation: source rock, maturation, migration, reservoir, seal, trap and preservation. Missing any one produces nothing, which is why exploration success rates are low even in proven basins.</p></div>
+      <div class="gitem" data-cat="geo"><h4>Kerogen <em>Geology</em></h4><p>The solid organic matter in a source rock from which hydrocarbons are generated on heating. Type I and II tend to yield oil, Type III mostly gas.</p></div>
+      <div class="gitem" data-cat="geo"><h4>Oil window <em>Geology</em></h4><p>The temperature range, roughly 60–120&deg;C, in which kerogen converts to liquid hydrocarbons. Cooler and it stays immature; hotter and you get gas, then nothing.</p></div>
+      <div class="gitem" data-cat="geo"><h4>Porosity <em>Geology</em></h4><p>The fraction of a rock's volume that is void space capable of holding fluid. Storage capacity. A good reservoir might be 15–25% porous.</p></div>
+      <div class="gitem" data-cat="geo"><h4>Permeability <em>Geology</em></h4><p>How readily fluid flows through connected pores, measured in darcies. Deliverability, and the thing that actually pays you. Shale permeability is measured in nanodarcies — billionths of a darcy.</p></div>
+      <div class="gitem" data-cat="geo"><h4>Trap <em>Geology</em></h4><p>The geometry that stops migrating oil: an anticline, a fault block, a salt dome flank, a stratigraphic pinch-out, a reef. Structural traps are easier to image seismically; stratigraphic traps are subtler and often overlooked.</p></div>
+      <div class="gitem" data-cat="geo"><h4>Seal / cap rock <em>Geology</em></h4><p>An impermeable barrier — shale, salt, anhydrite — above the reservoir that prevents further upward migration. Salt makes an exceptional seal, which is why so much of the world's oil sits near salt basins.</p></div>
+      <div class="gitem" data-cat="geo"><h4>Source rock <em>Geology</em></h4><p>Organic-rich rock that generates hydrocarbons. In a shale play the source rock is also the reservoir, which is the defining feature of unconventional production.</p></div>
+      <div class="gitem" data-cat="geo"><h4>Unconventional / resource play <em>Geology</em></h4><p>An accumulation that does not require a trap because the hydrocarbon never migrated. Continuous over large areas, requiring artificial permeability to produce. The Permian, Bakken, Eagle Ford, Marcellus, Vaca Muerta.</p></div>
+      <div class="gitem" data-cat="geo"><h4>API gravity <em>Geology</em></h4><p>A density scale for crude, inverted so higher is lighter. Above about 31 is light, below 22 heavy. Light crude yields more high-value product from a simple refinery and therefore commands a premium.</p></div>
+      <div class="gitem" data-cat="geo"><h4>Sweet and sour <em>Geology</em></h4><p>Low and high sulphur content, the threshold conventionally around 0.5%. Sour crude requires more refinery complexity to process and trades at a discount.</p></div>
+      <div class="gitem" data-cat="geo"><h4>Condensate <em>Geology</em></h4><p>Very light hydrocarbon, gaseous in the reservoir and liquid at surface. Above roughly 45 API. Frequently sells below crude despite being lighter, because refinery configurations are not built for it.</p></div>
+
+      <div class="gitem" data-cat="res"><h4>1P / proved reserves <em>Reserves</em></h4><p>Quantities with reasonable certainty of recovery — conventionally at least a 90% probability of being met or exceeded. The only category permitted in SEC financial disclosure.</p></div>
+      <div class="gitem" data-cat="res"><h4>2P and 3P <em>Reserves</em></h4><p>Proved plus probable (50% probability) and proved plus probable plus possible (10% probability). The international and Canadian norm for 2P; 3P is an upside case that should not anchor a valuation.</p></div>
+      <div class="gitem" data-cat="res"><h4>PDP / PUD <em>Reserves</em></h4><p>Proved developed producing — a well exists and flows. Proved undeveloped — booked reserves requiring future capital. PUDs generally must be scheduled for drilling within five years of first booking.</p></div>
+      <div class="gitem" data-cat="res"><h4>12-month average price rule <em>Reserves</em></h4><p>The SEC requirement to book reserves at the unweighted average of first-day-of-month prices over the prior twelve months, held flat. Makes reported reserves partly a function of price history rather than geology.</p></div>
+      <div class="gitem" data-cat="res"><h4>PV-10 <em>Reserves</em></h4><p>Pre-tax present value of proved reserves discounted at 10% under SEC pricing rules. Comparable across filers and not a valuation. The after-tax version is the standardized measure.</p></div>
+      <div class="gitem" data-cat="res"><h4>PRMS <em>Reserves</em></h4><p>The SPE Petroleum Resources Management System — the international, probabilistic, forecast-price framework used outside SEC filings. Will give different numbers than SEC rules for the same asset.</p></div>
+      <div class="gitem" data-cat="res"><h4>Contingent resources <em>Reserves</em></h4><p>Discovered hydrocarbons without a current commercial path — no market, no infrastructure, no sanctioned development. Real oil, uncertain cash.</p></div>
+      <div class="gitem" data-cat="res"><h4>Reserve replacement ratio <em>Reserves</em></h4><p>Reserves added divided by production, in a year. Above 100% means booked inventory grew. Easily flattered by acquisitions and price revisions; insist on the organic, price-neutral figure.</p></div>
+      <div class="gitem" data-cat="res"><h4>Reserve life index <em>Reserves</em></h4><p>Reserves divided by annual production, expressed in years. A crude but useful check on whether a producer is running down its asset base.</p></div>
+      <div class="gitem" data-cat="res"><h4>EUR <em>Reserves</em></h4><p>Estimated ultimate recovery — total volume a well will produce over its life. Entirely dependent on the decline parameters assumed, particularly the b-factor and the terminal decline.</p></div>
+      <div class="gitem" data-cat="res"><h4>OOIP / STOOIP <em>Reserves</em></h4><p>Original oil in place: everything the reservoir contains, before any consideration of what can be extracted. Multiplied by the recovery factor to get recoverable volume. Quoting OOIP alone is a promotional tell.</p></div>
+      <div class="gitem" data-cat="res"><h4>Recovery factor <em>Reserves</em></h4><p>Recoverable volume as a share of oil in place. 20–35% for conventional under natural drive, 40–60% with secondary recovery, and only about 5–10% for shale.</p></div>
+
+      <div class="gitem" data-cat="drl"><h4>Spud <em>Drilling</em></h4><p>To begin drilling a well. Spud-to-TD is the days taken to reach total depth, and it is the cleanest measure of drilling efficiency.</p></div>
+      <div class="gitem" data-cat="drl"><h4>Lateral <em>Drilling</em></h4><p>The horizontal section of a well, drilled inside the target interval. Length drives both cost and productivity; 10,000 feet is standard and 15,000 or more increasingly common.</p></div>
+      <div class="gitem" data-cat="drl"><h4>Completion <em>Drilling</em></h4><p>Everything done after drilling to make the well produce: perforating, hydraulic fracturing, installing production equipment. Now typically 55–70% of a shale well's total cost.</p></div>
+      <div class="gitem" data-cat="drl"><h4>Hydraulic fracturing <em>Drilling</em></h4><p>Injecting fluid at pressure to crack the reservoir rock, with proppant to hold the fractures open. Creates the permeability that tight rock lacks.</p></div>
+      <div class="gitem" data-cat="drl"><h4>Proppant <em>Drilling</em></h4><p>Sand or engineered ceramic pumped into fractures to keep them from closing. Loading per lateral foot is one of the main completion design variables.</p></div>
+      <div class="gitem" data-cat="drl"><h4>Stage <em>Drilling</em></h4><p>An isolated section of the lateral treated separately during fracturing. Tighter stage spacing means more stages, more cost and generally better stimulation.</p></div>
+      <div class="gitem" data-cat="drl"><h4>DUC <em>Drilling</em></h4><p>Drilled but uncompleted well. Cheap near-term production optionality because the drilling capital is already sunk. A falling DUC count flatters volumes without new capital.</p></div>
+      <div class="gitem" data-cat="drl"><h4>Pad drilling <em>Drilling</em></h4><p>Multiple wells from one surface location. Lowers cost per well and enables simultaneous completions, at the cost of lumpier production timing.</p></div>
+      <div class="gitem" data-cat="drl"><h4>Parent-child effect <em>Drilling</em></h4><p>Degradation of a new well's performance, and sometimes the existing well's, when drilled into rock already depleted by a neighbour. The central technical objection to dense-spacing inventory claims.</p></div>
+      <div class="gitem" data-cat="drl"><h4>Frac hit <em>Drilling</em></h4><p>Pressure communication between a well being completed and a nearby producer, occasionally causing permanent damage. A real cost that appears in no standard cost metric.</p></div>
+      <div class="gitem" data-cat="drl"><h4>Spacing <em>Drilling</em></h4><p>Distance between laterals and between stacked intervals. Determines claimed location counts, which determine inventory life, which drives valuation. Repeatedly revised wider after testing.</p></div>
+      <div class="gitem" data-cat="drl"><h4>Workover <em>Drilling</em></h4><p>Intervention on an existing well to restore or improve production — replacing a pump, cleaning out scale, re-perforating. A recurring operating cost that rises with well age.</p></div>
+
+      <div class="gitem" data-cat="prd"><h4>Decline curve <em>Production</em></h4><p>The falling profile of a well's production rate over time. The organising fact of the industry: it converts one capital decision into a fixed revenue schedule.</p></div>
+      <div class="gitem" data-cat="prd"><h4>Arps equation <em>Production</em></h4><p>The 1945 formulation still used for most production forecasting, covering exponential, hyperbolic and harmonic decline through the parameters initial rate, initial decline and b-factor.</p></div>
+      <div class="gitem" data-cat="prd"><h4>b-factor <em>Production</em></h4><p>The hyperbolic exponent controlling how fast the decline rate itself decelerates. Shale wells are commonly fitted between 0.8 and 1.5. Small increases add large amounts of claimed tail production, making this the most consequential contested number in shale valuation.</p></div>
+      <div class="gitem" data-cat="prd"><h4>Terminal decline <em>Production</em></h4><p>A floor decline rate, usually 5–8% a year, imposed to stop a hyperbolic curve producing implausible or infinite recovery. Whether one is applied, and at what level, is worth asking of every type curve.</p></div>
+      <div class="gitem" data-cat="prd"><h4>IP30 / IP90 <em>Production</em></h4><p>Average daily rate over the first 30 or 90 days. Far more informative than a 24-hour peak rate, which can be inflated by aggressive flowback at the cost of ultimate recovery.</p></div>
+      <div class="gitem" data-cat="prd"><h4>Type curve <em>Production</em></h4><p>An average expected production profile for a class of wells, multiplied by a location count to build a corporate forecast. Usually fitted to the best wells drilled so far.</p></div>
+      <div class="gitem" data-cat="prd"><h4>Base decline <em>Production</em></h4><p>The blended decline of a company's existing production. 6–10% for a conventional producer, 30–40% for a shale-heavy one. Sets the size of the reinvestment treadmill.</p></div>
+      <div class="gitem" data-cat="prd"><h4>Water cut <em>Production</em></h4><p>Water as a share of total produced liquid. Rises through a conventional well's life until handling cost exceeds oil value and the well is shut in — usually the real end of a well, not exhaustion of oil.</p></div>
+      <div class="gitem" data-cat="prd"><h4>GOR <em>Production</em></h4><p>Gas-oil ratio. Rises as reservoir pressure falls below the bubble point and dissolved gas breaks out. A rising GOR is a pressure-depletion signal and often precedes a rate decline.</p></div>
+      <div class="gitem" data-cat="prd"><h4>Artificial lift <em>Production</em></h4><p>Pumps, gas lift or plunger systems installed when reservoir pressure can no longer push fluid to surface unaided. Nearly every mature well is on lift; the type and its failure rate drive operating cost.</p></div>
+      <div class="gitem" data-cat="prd"><h4>Secondary and enhanced recovery <em>Production</em></h4><p>Waterflooding or gas injection to maintain reservoir pressure (secondary); CO&#8322;, chemical or thermal methods to mobilise oil that pressure alone will not move (tertiary or EOR). Capital-intensive, and largely unsuccessful in shale so far.</p></div>
+      <div class="gitem" data-cat="prd"><h4>Stripper well <em>Production</em></h4><p>A well producing under about 15 barrels a day. Collectively a meaningful share of US production, individually marginal, and the source of most orphan-well liability.</p></div>
+
+      <div class="gitem" data-cat="mid"><h4>Brent / WTI / Dubai <em>Midstream</em></h4><p>The three principal crude benchmarks: North Sea waterborne, Cushing Oklahoma pipeline, and the medium sour barrel flowing east. Each is a specific grade at a specific place, not "oil".</p></div>
+      <div class="gitem" data-cat="mid"><h4>Differential / basis <em>Midstream</em></h4><p>The gap between a local crude price and a benchmark, comprising transport cost, quality difference and takeaway scarcity. Blowouts in the differential are the market pricing a bottleneck.</p></div>
+      <div class="gitem" data-cat="mid"><h4>Netback <em>Midstream</em></h4><p>Realised price less royalties, production taxes, transport and operating cost — the cash margin per barrel at the field. Excludes capital entirely.</p></div>
+      <div class="gitem" data-cat="mid"><h4>Firm transportation <em>Midstream</em></h4><p>Contracted pipeline capacity paid for whether used or not. A genuine competitive asset when takeaway is scarce, and a fixed cost when it is not.</p></div>
+      <div class="gitem" data-cat="mid"><h4>Crack spread <em>Midstream</em></h4><p>A refinery's margin: the value of the product slate minus the cost of crude. The 3-2-1 shorthand assumes three barrels of crude yielding two of gasoline and one of distillate.</p></div>
+      <div class="gitem" data-cat="mid"><h4>Refinery complexity <em>Midstream</em></h4><p>The presence of upgrading units — cokers, hydrocrackers — that let a refinery buy cheap heavy sour crude and still produce high-value light products. Complexity converts the light-heavy spread into margin.</p></div>
+      <div class="gitem" data-cat="mid"><h4>NGLs <em>Midstream</em></h4><p>Natural gas liquids: ethane, propane, butane, isobutane, natural gasoline, separated at a processing plant. Priced off their own markets, often quoted as a percentage of WTI.</p></div>
+      <div class="gitem" data-cat="mid"><h4>Ethane rejection <em>Midstream</em></h4><p>Leaving ethane in the gas stream to be sold as fuel rather than extracting it as a liquid, when the liquid price does not justify processing. A swing of several hundred thousand barrels a day in reported US NGL supply.</p></div>
+      <div class="gitem" data-cat="mid"><h4>Flaring <em>Midstream</em></h4><p>Burning associated gas that cannot be captured or moved. A visible waste, an emissions liability, and increasingly restricted by regulators and by investor pressure.</p></div>
+      <div class="gitem" data-cat="mid"><h4>LNG <em>Midstream</em></h4><p>Natural gas chilled to liquid for shipment, which converts a regional commodity into a tradable one. Liquefaction capacity is the binding constraint and takes four to six years to build.</p></div>
+
+      <div class="gitem" data-cat="eco"><h4>Half-cycle economics <em>Economics</em></h4><p>Drilling and completion cost against the revenue of one well. Excludes acreage, appraisal, overhead, interest, infrastructure and abandonment. Nearly every quoted breakeven is this.</p></div>
+      <div class="gitem" data-cat="eco"><h4>Full-cycle economics <em>Economics</em></h4><p>Everything: land, exploration, infrastructure, corporate cost, financing and eventual plugging. The gap between the two explains how an industry of good wells produced a decade of poor returns.</p></div>
+      <div class="gitem" data-cat="eco"><h4>F&amp;D cost <em>Economics</em></h4><p>Finding and development cost per barrel of reserves added. Highly gameable through the denominator; use a three-year organic drill-bit average.</p></div>
+      <div class="gitem" data-cat="eco"><h4>Recycle ratio <em>Economics</em></h4><p>Netback per barrel divided by F&amp;D cost per barrel. Above 2.0x is healthy; below 1.0x means value is being destroyed on every barrel replaced.</p></div>
+      <div class="gitem" data-cat="eco"><h4>Maintenance capital <em>Economics</em></h4><p>The capital needed to hold production flat against base decline. Free cash flow above maintenance capital is the number that matters, and it is rarely disclosed directly.</p></div>
+      <div class="gitem" data-cat="eco"><h4>Reinvestment rate <em>Economics</em></h4><p>Capital spending as a share of operating cash flow. Above 100% is outspending; the post-2020 discipline consensus settled near 50–70%.</p></div>
+      <div class="gitem" data-cat="eco"><h4>Payout <em>Economics</em></h4><p>Time for a well's cumulative net cash flow to equal its cost. Shale wells at healthy prices pay out in twelve to thirty months, which is what makes the half-cycle picture so attractive.</p></div>
+      <div class="gitem" data-cat="eco"><h4>Inventory life <em>Economics</em></h4><p>Remaining drilling locations divided by annual drilling pace. Ten years of genuine Tier 1 supports a premium; three does not, regardless of current cash flow.</p></div>
+
+      <div class="gitem" data-cat="fin"><h4>Working interest <em>Finance</em></h4><p>The share of a well's costs a party bears and the obligation to fund development. The only interest that can elect to deduct intangible drilling costs.</p></div>
+      <div class="gitem" data-cat="fin"><h4>Net revenue interest <em>Finance</em></h4><p>Working interest multiplied by one minus the royalty burden. A 100% working interest under a 25% royalty is a 75% NRI. Working interest is your share of the bill; NRI is your share of the cheque.</p></div>
+      <div class="gitem" data-cat="fin"><h4>Royalty interest <em>Finance</em></h4><p>A share of production revenue free of all drilling and operating cost, retained by the mineral owner. Historically one-eighth; now often 20–25% in competitive basins.</p></div>
+      <div class="gitem" data-cat="fin"><h4>Overriding royalty (ORRI) <em>Finance</em></h4><p>A royalty carved out of the working interest rather than the mineral estate, commonly granted to the person who assembled the deal. Expires with the lease.</p></div>
+      <div class="gitem" data-cat="fin"><h4>Reserve-based lending <em>Finance</em></h4><p>Bank credit sized to a borrowing base derived from discounted proved reserves, redetermined semi-annually at the banks' own price deck. Procyclical by construction — the facility shrinks exactly when cash flow does.</p></div>
+      <div class="gitem" data-cat="fin"><h4>Farmout <em>Finance</em></h4><p>An acreage holder gives a partner an interest in exchange for the partner funding drilling. The classic structure for a company with land and no capital.</p></div>
+      <div class="gitem" data-cat="fin"><h4>Carried interest <em>Finance</em></h4><p>An interest whose costs are paid by another party, usually until payout. The mechanism inside most farmouts and DrillCo arrangements.</p></div>
+      <div class="gitem" data-cat="fin"><h4>JOA <em>Finance</em></h4><p>Joint operating agreement. Governs who operates a well, how costs are billed, and what happens when a partner declines to fund — the non-consent penalty, which can run to several hundred percent before the interest reverts.</p></div>
+      <div class="gitem" data-cat="fin"><h4>Held by production <em>Finance</em></h4><p>A lease clause continuing the lease indefinitely so long as production continues. Explains why operators sometimes drill uneconomic wells: losing the acreage costs more.</p></div>
+      <div class="gitem" data-cat="fin"><h4>MLP <em>Finance</em></h4><p>Master limited partnership. Avoids entity-level tax by distributing nearly all cash flow, issuing K-1s. Suits fee-based midstream; suits volatile upstream production badly.</p></div>
+      <div class="gitem" data-cat="fin"><h4>Volumetric production payment <em>Finance</em></h4><p>Selling a fixed volume of future production for cash today. Legally a sale of a real property interest rather than a loan, with consequences in bankruptcy.</p></div>
+      <div class="gitem" data-cat="fin"><h4>Asset retirement obligation <em>Finance</em></h4><p>The discounted liability for plugging wells and restoring sites. Frequently understated, and a growing public burden as marginal wells change hands to ever-smaller owners.</p></div>
+
+      <div class="gitem" data-cat="fis"><h4>Concession / royalty-tax regime <em>Fiscal</em></h4><p>The company owns the hydrocarbons at the wellhead; the state takes a royalty on gross production and taxes the profit. The US, Canada, UK, Norway, Australia and much of Latin America.</p></div>
+      <div class="gitem" data-cat="fis"><h4>Production sharing contract <em>Fiscal</em></h4><p>The state retains ownership; the contractor recovers costs from "cost oil" up to a ceiling and splits the remaining "profit oil" with the state. Dominant across Asia, Africa and the Middle East.</p></div>
+      <div class="gitem" data-cat="fis"><h4>Cost oil and profit oil <em>Fiscal</em></h4><p>The two portions of PSC production. The cost recovery ceiling limits how fast a contractor can recoup spending; unrecovered costs carry forward. The ceiling is often more economically important than the headline profit split.</p></div>
+      <div class="gitem" data-cat="fis"><h4>R-factor <em>Fiscal</em></h4><p>Cumulative contractor revenue divided by cumulative contractor cost, used to slide the profit oil split progressively toward the state as a project pays back. A common feature of modern PSCs.</p></div>
+      <div class="gitem" data-cat="fis"><h4>Government take <em>Fiscal</em></h4><p>The state's share of divisible income — revenue less recoverable cost — across all fiscal instruments combined. The standard basis for comparing regimes, and it ranges from roughly 40% to over 90%.</p></div>
+      <div class="gitem" data-cat="fis"><h4>Service contract <em>Fiscal</em></h4><p>The contractor is paid a fee per barrel with no price exposure. Iraq's post-2009 technical service contracts are the largest example. Low risk, low reward.</p></div>
+      <div class="gitem" data-cat="fis"><h4>Intangible drilling costs <em>Fiscal</em></h4><p>The non-salvageable portion of a well — labour, rig time, fluids, cementing, services — typically 60–85% of cost, deductible in full in the year incurred by working interest owners under IRC §263(c).</p></div>
+      <div class="gitem" data-cat="fis"><h4>Percentage depletion <em>Fiscal</em></h4><p>A deduction of 15% of gross income from a property, available to independent producers and royalty owners subject to net income and production limits. Not capped at capital invested.</p></div>
+      <div class="gitem" data-cat="fis"><h4>Severance tax <em>Fiscal</em></h4><p>A state tax on the value of production at the wellhead. Texas charges 4.6% on oil and 7.5% on gas; combined with county ad valorem tax the burden commonly runs 6–9% of revenue.</p></div>
+      <div class="gitem" data-cat="fis"><h4>Ring-fencing <em>Fiscal</em></h4><p>Treating each licence or field as a separate taxpayer so losses in one cannot shelter profits in another. Materially raises effective take and discourages exploration by established producers.</p></div>
+      <div class="gitem" data-cat="fis"><h4>Successful efforts vs full cost <em>Fiscal</em></h4><p>Two permitted accounting methods. Successful efforts expenses dry holes immediately; full cost capitalises them into a pool subject to a ceiling test that forces write-downs when prices fall.</p></div>
+
+      <div class="gitem" data-cat="mkt"><h4>OPEC and OPEC+ <em>Market</em></h4><p>The producer group that coordinates supply, and its wider grouping including Russia and others. Its withheld capacity has damped price volatility for fifty years — a function now diminished by the UAE's 2026 departure.</p></div>
+      <div class="gitem" data-cat="mkt"><h4>Spare capacity <em>Market</em></h4><p>Production that can be brought online within about 90 days and sustained. The market's shock absorber. Concentrated in Saudi Arabia, and smaller now than at any point in years.</p></div>
+      <div class="gitem" data-cat="mkt"><h4>Contango and backwardation <em>Market</em></h4><p>Futures above spot, and below it. Contango pays you to store; backwardation signals physical tightness and penalises inventory. 2026 has been persistently backwardated.</p></div>
+      <div class="gitem" data-cat="mkt"><h4>Strategic Petroleum Reserve <em>Market</em></h4><p>Government-held emergency crude stocks. The US reserve is below 300 million barrels as of August 2026, its lowest since January 1983, which limits the traditional policy response to a supply shock.</p></div>
+      <div class="gitem" data-cat="mkt"><h4>Strait of Hormuz <em>Market</em></h4><p>The waterway between Iran and Oman carrying roughly a fifth of global oil and LNG in peacetime. Effectively closed since February 2026, and the single largest determinant of the current price.</p></div>
+      <div class="gitem" data-cat="mkt"><h4>Boe <em>Market</em></h4><p>Barrel of oil equivalent, converting gas at 6,000 cubic feet per barrel. Roughly right on energy content and badly wrong on value. Always demand the liquids split.</p></div>
+      <div class="gitem" data-cat="mkt"><h4>Price deck <em>Market</em></h4><p>The set of forward commodity prices used in a model or a bank's borrowing base determination. Two analysts disagreeing about a company usually disagree about the deck, not the asset.</p></div>
+      <div class="gitem" data-cat="mkt"><h4>Hedging <em>Market</em></h4><p>Fixing forward prices with swaps, collars or puts. Protects a drilling programme and satisfies lenders, and makes realised price a treasury outcome rather than an operating one. Strip it out before comparing companies.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 16. RETAIN ===================== -->
+<section class="section" id="retain" data-nav="Takeaways">
+  <div class="wrap">
+    <div class="kicker">16 &nbsp;/&nbsp; What to retain</div>
+    <h2>Twelve things worth keeping</h2>
+    <p class="sub">If everything else evaporates, these survive.</p>
+
+    <div class="grid g3" style="margin-top:20px">
+      <div class="card"><div class="num">1</div><h3>The decline curve governs</h3><p>Production rate is set by reservoir physics, not by management. One capital decision produces a fixed revenue schedule that falls from day one.</p></div>
+      <div class="card"><div class="num">2</div><h3>Shale is front-loaded</h3><p>Roughly half of a shale well's lifetime output arrives in its first three years. That shape drives the financing, the accounting and the disappointments.</p></div>
+      <div class="card"><div class="num">3</div><h3>The b-factor is where the tail lives</h3><p>Raising the hyperbolic exponent barely changes the near term and transforms the estimated ultimate recovery. Interrogate it, and the terminal decline beside it.</p></div>
+      <div class="card"><div class="num o">4</div><h3>Half-cycle is not full-cycle</h3><p>Nearly every quoted breakeven excludes land, overhead, interest, infrastructure and abandonment. The gap is what turned a decade of good wells into poor returns.</p></div>
+      <div class="card"><div class="num o">5</div><h3>Reserves move with price rules</h3><p>The SEC's twelve-month average pricing makes reported reserves partly a price history. Read the revisions line in the reconciliation table, not the headline.</p></div>
+      <div class="card"><div class="num o">6</div><h3>The screen price is not your price</h3><p>Differentials, quality adjustments, gathering, royalty and severance tax can take more than half of the benchmark before a dollar of capital is recovered.</p></div>
+      <div class="card"><div class="num g">7</div><h3>Boe hides the mix</h3><p>Gas converts at 6:1 on energy and something closer to 20:1 on value. Growth in boe with a shifting mix can be shrinkage in revenue.</p></div>
+      <div class="card"><div class="num g">8</div><h3>Inventory quality is the asset</h3><p>Current production is visible and temporary. What determines value is how many genuinely good locations remain, at spacing that has actually been tested.</p></div>
+      <div class="card"><div class="num g">9</div><h3>Working interest pays; NRI receives</h3><p>Confusing the two overstates cash flow by the whole royalty burden, and it happens in real models.</p></div>
+      <div class="card"><div class="num p">10</div><h3>The fiscal regime is half the deal</h3><p>Government take ranges from around 40% to over 90%. A cost recovery ceiling can matter more to a contractor's return than the headline profit split.</p></div>
+      <div class="card"><div class="num p">11</div><h3>The tax code is deliberate policy</h3><p>Expensing intangible drilling costs and 15% percentage depletion are designed to lower the effective cost of capital for domestic drilling. They change behaviour, not just tax bills.</p></div>
+      <div class="card"><div class="num p">12</div><h3>The price forecast is the valuation</h3><p>Consensus 2026 Brent moved from the mid-$50s to $90–100 in under a year on geopolitics. Any single-price valuation is a bet on a forecast that has repeatedly inverted.</p></div>
+    </div>
+
+    <div class="panel invert" style="margin-top:26px">
+      <h3>The question to ask first, always</h3>
+      <p>What does this company have to do next year just to stay the same size? Base decline times production, divided by the first-year output of a typical new well, times well cost. Compare the answer to operating cash flow. Everything above that line is available to owners; everything below it means the business is shrinking or borrowing. Most oil disappointments are visible in that single calculation years before they appear in the share price.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 17. SOURCES ===================== -->
+<section class="section" id="sources" data-nav="Sources">
+  <div class="wrap">
+    <div class="kicker">17 &nbsp;/&nbsp; Reading</div>
+    <h2>Where this comes from</h2>
+    <p class="sub">Six books, in the order that builds understanding fastest.</p>
+
+    <div class="tablewrap"><div class="table-scroll">
+      <table>
+        <thead><tr><th>Read</th><th>Book</th><th>What it gives you</th></tr></thead>
+        <tbody>
+          <tr><td>First</td><td>Morgan Downey — <i>Oil 101</i></td><td>The single best orientation to the whole chain: history, geology, drilling, refining, products, transport, trading and pricing, written for people who need to be functional quickly.</td></tr>
+          <tr><td>Second</td><td>Norman Hyne — <i>Nontechnical Guide to Petroleum Geology, Exploration, Drilling and Production</i></td><td>The standard technical primer. Petroleum systems, traps, drilling mechanics, completions, reservoir drive and production, all without requiring an engineering degree.</td></tr>
+          <tr><td>Third</td><td>Daniel Johnston — <i>International Petroleum Fiscal Systems and Production Sharing Contracts</i></td><td>The reference on how governments take their share. Cost oil, profit oil, R-factors, sliding scales, government take arithmetic and how to compare regimes. Nothing else covers this ground as well.</td></tr>
+          <tr><td>Fourth</td><td>M.A. Mian — <i>Project Economics and Decision Analysis</i></td><td>The economics and valuation mechanics: decline curve analysis, cash flow modelling, risk analysis and the fiscal calculations applied to real project structures.</td></tr>
+          <tr><td>Alongside</td><td>William Leffler — <i>Petroleum Refining in Nontechnical Language</i></td><td>What a refinery does and why configuration determines which crudes are worth buying. The best single explanation of crack spreads and complexity.</td></tr>
+          <tr><td>Alongside</td><td>Daniel Yergin — <i>The Prize</i> and <i>The New Map</i></td><td>The political and strategic history, and why the industry's structure is what it is. Not technical, and indispensable for understanding why a waterway can reprice a global asset class in a week.</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+
+    <p class="tight" style="margin-top:24px">The fastest way to make any of it concrete is the same as in mining: read the books while rebuilding a real asset. Take one public E&amp;P, pull its latest reserve report and its type curves, build the decline model yourself, and reconcile your answer to its stated PV-10. The gaps you cannot close are exactly the assumptions worth arguing about.</p>
+
+    <h3 class="sub-h">Where the current data came from</h3>
+    <p class="tight">Price levels, the Hormuz timeline and OPEC+ production figures are from contemporaneous reporting by Al Jazeera, CNBC, Reuters via Trading Economics, and OilPrice, cross-checked against the US Energy Information Administration's Short-Term Energy Outlook of 8 September 2026. Forecasts cited are the EIA's, J.P. Morgan Global Research's, and Goldman Sachs' as published in the periods stated. US production, Permian productivity and rig commentary draw on the EIA, Dallas Fed energy survey coverage, Jefferies estimates as reported, and Kpler scenario work. Natural gas and LNG figures are the EIA's January and September 2026 outlooks. Reserve reporting rules follow SEC Regulation S-X Rule 4-10 and the SPE Petroleum Resources Management System. US tax provisions follow IRC §263(c), §611, §613A and §1254, with royalty rate changes per the Inflation Reduction Act of 2022 and the One Big Beautiful Bill Act of July 2025. M&amp;A figures are from Wood Mackenzie and Akin Gump summaries as reported.</p>
+
+    <div class="warning"><b>Standing caveat.</b> Every price, forecast and conflict status in this document was accurate at the build stamp in the footer and is moving faster than usual. Nothing here is investment, tax or legal advice. The three models are teaching tools with simplified tax, no working capital, no abandonment cost and no gas or NGL revenue — use them to develop intuition about which assumptions matter, then build a real one.</div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <p>Oil From the Reservoir Up &mdash; a ground-up field guide to the oil and gas industry, its economics and its vocabulary. Companion volume to <i>Mining From the Rock Up</i>. Written for readers starting from zero.</p>
+    <p class="verstamp">Oil From the Reservoir Up &mdash; v1.0 &middot; build 2026-09-10T05:25-04:00 &middot; first issue. Sections 1&ndash;17, three interactive models, 95 glossary terms.</p>
+    <p style="margin-top:8px">Contact: <a href="mailto:ponelson@gmail.com">ponelson@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/ponelson/">LinkedIn</a> &middot; <a href="https://ponelson.github.io/pon/">GitHub</a></p>
+  </div>
+</footer>
+
+<script>
+
+
+/* ---------------- theme ---------------- */
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeToggle'),
+      lbl=document.getElementById('themeLabel'), meta=document.getElementById('themeColorMeta');
+  function read(){ try{return localStorage.getItem('theme');}catch(e){return null;} }
+  function write(v){ try{localStorage.setItem('theme',v);}catch(e){} }
+  function apply(t){
+    root.setAttribute('data-theme',t);
+    if(lbl) lbl.textContent = (t==='dark'?'Light':'Dark');
+    if(btn) btn.setAttribute('aria-pressed', t==='dark' ? 'true':'false');
+    if(meta) meta.setAttribute('content', t==='dark' ? '#0d0d10' : '#f5f5f7');
+  }
+  var saved=read();
+  var initial = saved || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
+  apply(initial);
+  if(btn) btn.addEventListener('click',function(){
+    var next = root.getAttribute('data-theme')==='dark' ? 'light':'dark';
+    apply(next); write(next);
+  });
+  if(window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(e){
+    if(!read()) apply(e.matches?'dark':'light');
+  });
+})();
+
+/* ---------------- nav from sections ---------------- */
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('section.section[data-nav]'));
+  var nl=document.getElementById('navlinks'), dr=document.getElementById('drawer'), mb=document.getElementById('menubtn');
+  secs.forEach(function(s){
+    [[nl],[dr]].forEach(function(h){
+      if(!h[0])return;
+      var a=document.createElement('a');
+      a.href='#'+s.id; a.textContent=s.dataset.nav;
+      h[0].appendChild(a);
+    });
+  });
+  if(mb&&dr) mb.addEventListener('click',function(){dr.classList.toggle('open');});
+  if(dr) dr.addEventListener('click',function(e){if(e.target.tagName==='A')dr.classList.remove('open');});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      [].forEach.call(document.querySelectorAll('#navlinks a'),function(a){
+        a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id);
+      });
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(function(s){io.observe(s);});
+})();
+
+/* ---------------- accordions ---------------- */
+[].forEach.call(document.querySelectorAll('.fam-head'),function(h){
+  h.addEventListener('click',function(){h.closest('.fam').classList.toggle('open');});
+});
+
+
+/* ---------------- shared helpers ---------------- */
+function $(id){return document.getElementById(id);}
+function fmt(n,d){ if(!isFinite(n)) return '—';
+  return n.toLocaleString('en-US',{minimumFractionDigits:d||0,maximumFractionDigits:d||0}); }
+function money(n){
+  var a=Math.abs(n), s=n<0?'-$':'$';
+  if(a>=1e9) return s+(a/1e9).toFixed(2)+'B';
+  if(a>=1e6) return s+(a/1e6).toFixed(2)+'M';
+  if(a>=1e3) return s+fmt(a,0);
+  return s+a.toFixed(2);
+}
+function usd(n,d){ return (n<0?'-$':'$')+Math.abs(n).toFixed(d===undefined?2:d); }
+
+/* ---------------- decline curve + well economics ---------------- */
+(function(){
+  var ip=$('dcIp'); if(!ip) return;
+  var di=$('dcDi'), bf=$('dcB'), td=$('dcTd'), cost=$('dcCost'), px=$('dcPx'),
+      diff=$('dcDiff'), nri=$('dcNri'), loe=$('dcLoe'), sev=$('dcSev'), dr=$('dcDr');
+  var svg=$('dcChart'), NS='http://www.w3.org/2000/svg', MONTHS=360, DPM=30.44;
+
+  /* monthly rate profile with hyperbolic decline and a terminal exponential switch */
+  function profile(qi,De,b,Dterm){
+    var rates=[], q=qi;
+    if(b<=0.001) b=0.001;
+    /* convert the first-year EFFECTIVE decline the user set into the nominal
+       initial decline the Arps equation needs */
+    var Di = (Math.pow(1-De, -b) - 1)/b;
+    /* time at which instantaneous hyperbolic decline equals terminal decline */
+    var tsw = (Di/Dterm - 1)/(b*Di);
+    var qsw = qi/Math.pow(1+b*Di*tsw, 1/b);
+    for(var m=0;m<MONTHS;m++){
+      var t=(m+0.5)/12;
+      if(tsw>0 && t>tsw){ q = qsw*Math.exp(-Dterm*(t-tsw)); }
+      else { q = qi/Math.pow(1+b*Di*t, 1/b); }
+      rates.push(q);
+    }
+    return rates;
+  }
+
+  function draw(rates){
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    var x0=48, x1=616, yTop=22, yBase=206, N=120;
+    var maxQ=rates[0]||1, cumMax=0, cum=0;
+    for(var i=0;i<N;i++) cumMax+=rates[i]*DPM;
+    var ax=document.createElementNS(NS,'line');
+    ax.setAttribute('x1',x0); ax.setAttribute('x2',x1); ax.setAttribute('y1',yBase); ax.setAttribute('y2',yBase);
+    ax.setAttribute('stroke','var(--line-strong)'); ax.setAttribute('stroke-width','1'); svg.appendChild(ax);
+    var ay=document.createElementNS(NS,'line');
+    ay.setAttribute('x1',x0); ay.setAttribute('x2',x0); ay.setAttribute('y1',yTop); ay.setAttribute('y2',yBase);
+    ay.setAttribute('stroke','var(--line-strong)'); ay.setAttribute('stroke-width','1'); svg.appendChild(ay);
+
+    var dRate='', dCum='';
+    for(var m=0;m<N;m++){
+      var x=x0+(m/(N-1))*(x1-x0);
+      var yr=yBase-(rates[m]/maxQ)*(yBase-yTop);
+      cum+=rates[m]*DPM;
+      var yc=yBase-(cum/cumMax)*(yBase-yTop);
+      dRate+=(m?' L':'M')+x.toFixed(1)+' '+yr.toFixed(1);
+      dCum+=(m?' L':'M')+x.toFixed(1)+' '+yc.toFixed(1);
+    }
+    var area=document.createElementNS(NS,'path');
+    area.setAttribute('d', dRate+' L'+x1+' '+yBase+' L'+x0+' '+yBase+' Z');
+    area.setAttribute('fill','var(--blue-soft)'); svg.appendChild(area);
+    var pc=document.createElementNS(NS,'path');
+    pc.setAttribute('d',dCum); pc.setAttribute('fill','none');
+    pc.setAttribute('stroke','var(--orange)'); pc.setAttribute('stroke-width','2');
+    pc.setAttribute('stroke-dasharray','5 4'); svg.appendChild(pc);
+    var pr=document.createElementNS(NS,'path');
+    pr.setAttribute('d',dRate); pr.setAttribute('fill','none');
+    pr.setAttribute('stroke','var(--blue)'); pr.setAttribute('stroke-width','2.5');
+    pr.setAttribute('stroke-linejoin','round'); svg.appendChild(pr);
+
+    [[0,'0'],[24,'yr 2'],[48,'yr 4'],[72,'yr 6'],[96,'yr 8'],[119,'yr 10']].forEach(function(t){
+      var x=x0+(t[0]/(N-1))*(x1-x0);
+      var lb=document.createElementNS(NS,'text');
+      lb.setAttribute('x',x); lb.setAttribute('y',yBase+18); lb.setAttribute('text-anchor','middle');
+      lb.setAttribute('class','lc-label'); lb.setAttribute('fill','var(--ink-dim)'); lb.textContent=t[1];
+      svg.appendChild(lb);
+    });
+    var top=document.createElementNS(NS,'text');
+    top.setAttribute('x',x0+4); top.setAttribute('y',yTop-6); top.setAttribute('class','lc-label');
+    top.setAttribute('fill','var(--ink-dim)'); top.textContent=fmt(maxQ,0)+' bo/d peak  ·  first 10 years shown';
+    svg.appendChild(top);
+    var note=document.createElementNS(NS,'text');
+    note.setAttribute('x',x0); note.setAttribute('y',yBase+40); note.setAttribute('class','lc-label');
+    note.setAttribute('fill','var(--ink-dim)'); note.textContent='Both curves scaled to their own maximum';
+    svg.appendChild(note);
+  }
+
+  function irr(flows){
+    function npvAt(r){ var s=0; for(var i=0;i<flows.length;i++) s+=flows[i]/Math.pow(1+r,i); return s; }
+    var lo=-0.99, hi=5.0;
+    if(npvAt(lo)*npvAt(hi)>0) return null;
+    for(var k=0;k<100;k++){ var mid=(lo+hi)/2; if(npvAt(lo)*npvAt(mid)<=0) hi=mid; else lo=mid; }
+    return (lo+hi)/2;
+  }
+
+  function econ(rates, price, p){
+    /* returns {npv, flows, cum...} at a given wellhead-driving oil price */
+    var real=price+p.diff;
+    var mr=Math.pow(1+p.dr,1/12)-1;
+    var flows=[-p.cost], npv=-p.cost, cumcf=0, payout=null, cf1=0;
+    for(var m=0;m<MONTHS;m++){
+      var vol=rates[m]*DPM;
+      var gross=vol*real*p.nri;
+      var cf=gross*(1-p.sev) - vol*p.loe;
+      flows.push(cf);
+      npv+=cf/Math.pow(1+mr,m+1);
+      cumcf+=cf;
+      if(m<12) cf1+=cf;
+      if(payout===null && cumcf>=p.cost) payout=m+1;
+    }
+    return {npv:npv, flows:flows, payout:payout, cf1:cf1, real:real};
+  }
+
+  function calc(){
+    var p={
+      qi:parseInt(ip.value,10),
+      Di:parseInt(di.value,10)/100,
+      b:parseInt(bf.value,10)/100,
+      Dt:parseInt(td.value,10)/100,
+      cost:parseInt(cost.value,10)*1e5,
+      px:parseInt(px.value,10),
+      diff:parseInt(diff.value,10)/100,
+      nri:parseInt(nri.value,10)/1000,
+      loe:parseInt(loe.value,10)/100,
+      sev:parseInt(sev.value,10)/1000,
+      dr:parseInt(dr.value,10)/100
+    };
+    $('dcIpL').textContent=fmt(p.qi,0)+' bo/d';
+    $('dcDiL').textContent=(p.Di*100).toFixed(0)+'%';
+    $('dcBL').textContent=p.b.toFixed(2);
+    $('dcTdL').textContent=(p.Dt*100).toFixed(0)+'%/yr';
+    $('dcCostL').textContent='$'+(p.cost/1e6).toFixed(1)+'M';
+    $('dcPxL').textContent='$'+p.px+'/bbl';
+    $('dcDiffL').textContent=usd(p.diff)+'/bbl';
+    $('dcNriL').textContent=(p.nri*100).toFixed(1)+'%';
+    $('dcLoeL').textContent=usd(p.loe)+'/bbl';
+    $('dcSevL').textContent=(p.sev*100).toFixed(1)+'%';
+    $('dcDrL').textContent=(p.dr*100).toFixed(0)+'%';
+
+    var rates=profile(p.qi,p.Di,p.b,p.Dt);
+    draw(rates);
+
+    var cum=[], run=0;
+    for(var m=0;m<MONTHS;m++){ run+=rates[m]*DPM; cum.push(run); }
+    var y1=0; for(var i=0;i<12;i++) y1+=rates[i]; y1/=12;
+    var eur=cum[MONTHS-1];
+    var front=cum[35]/eur;
+    var y2avg=0; for(var j=12;j<24;j++) y2avg+=rates[j]; y2avg/=12;
+
+    var r=econ(rates,p.px,p);
+    var irrv=irr(r.flows);
+    var irrAnn = irrv===null?null:(Math.pow(1+irrv,12)-1);
+
+    /* breakeven price at the stated discount rate */
+    var lo=1, hi=400, be=null;
+    for(var k=0;k<60;k++){
+      var mid=(lo+hi)/2;
+      if(econ(rates,mid,p).npv>0) hi=mid; else lo=mid;
+    }
+    be=(lo+hi)/2;
+
+    $('dcY1').textContent=fmt(y1,0)+' bo/d';
+    $('dcM24').textContent=fmt(rates[23],0)+' bo/d';
+    $('dcDecl').textContent=(y1>0?((1-y2avg/y1)*100).toFixed(0):'—')+'%';
+    $('dcCum1').textContent=fmt(cum[11]/1000,0)+' Mbbl';
+    $('dcEur').textContent=fmt(eur/1000,0)+' Mbbl';
+    $('dcFront').textContent=(front*100).toFixed(0)+'%';
+    $('dcReal').textContent=usd(r.real)+'/bbl';
+    $('dcCf1').textContent=money(r.cf1);
+    $('dcPayout').textContent = r.payout ? (r.payout<=MONTHS? r.payout+' months' : 'never') : 'never';
+    var nEl=$('dcNpv'); nEl.textContent=money(r.npv); nEl.className='v '+(r.npv>0?'pos':'neg');
+    $('dcIrr').textContent = (irrAnn===null||irrAnn>20) ? 'n/a' : (irrAnn*100).toFixed(0)+'%';
+    $('dcFd').textContent = usd(p.cost/(eur*p.nri))+'/bbl net';
+    $('dcBe').textContent = be>390 ? 'above $400' : usd(be)+'/bbl';
+
+    var bar=$('dcBar');
+    bar.style.width=(front*100).toFixed(1)+'%';
+    bar.className = front>0.65 ? 'bad' : (front>0.5 ? 'warn' : '');
+  }
+  [ip,di,bf,td,cost,px,diff,nri,loe,sev,dr].forEach(function(el){el.addEventListener('input',calc);});
+  calc();
+})();
+
+/* ---------------- wellhead netback ---------------- */
+(function(){
+  var px=$('nbPx'); if(!px) return;
+  var loc=$('nbLoc'), qual=$('nbQual'), gath=$('nbGath'), roy=$('nbRoy'),
+      sev=$('nbSev'), loe=$('nbLoe'), wtr=$('nbWtr'), ga=$('nbGa');
+  function netback(P,v){
+    var wellhead=P+v.loc+v.qual-v.gath;
+    var royalty=wellhead*v.roy;
+    var tax=wellhead*v.sev;
+    return {wellhead:wellhead, royalty:royalty, tax:tax,
+            net: wellhead-royalty-tax-v.loe-v.wtr-v.ga};
+  }
+  function calc(){
+    var v={
+      P:parseInt(px.value,10)/100,
+      loc:parseInt(loc.value,10)/100,
+      qual:parseInt(qual.value,10)/100,
+      gath:parseInt(gath.value,10)/100,
+      roy:parseInt(roy.value,10)/1000,
+      sev:parseInt(sev.value,10)/1000,
+      loe:parseInt(loe.value,10)/100,
+      wtr:parseInt(wtr.value,10)/100,
+      ga:parseInt(ga.value,10)/100
+    };
+    $('nbPxL').textContent=usd(v.P)+'/bbl';
+    $('nbLocL').textContent=usd(v.loc)+'/bbl';
+    $('nbQualL').textContent=usd(v.qual)+'/bbl';
+    $('nbGathL').textContent=usd(v.gath)+'/bbl';
+    $('nbRoyL').textContent=(v.roy*100).toFixed(1)+'%';
+    $('nbSevL').textContent=(v.sev*100).toFixed(1)+'%';
+    $('nbLoeL').textContent=usd(v.loe)+'/bbl';
+    $('nbWtrL').textContent=usd(v.wtr)+'/bbl';
+    $('nbGaL').textContent=usd(v.ga)+'/bbl';
+
+    var r=netback(v.P,v);
+    $('nbO1').textContent=usd(v.P);
+    $('nbO2').textContent=usd(v.loc);
+    $('nbO3').textContent=usd(v.qual);
+    $('nbO4').textContent=usd(-v.gath);
+    $('nbO5').textContent=usd(r.wellhead);
+    $('nbO6').textContent=usd(-r.royalty);
+    $('nbO7').textContent=usd(-r.tax);
+    $('nbO8').textContent=usd(-v.loe);
+    $('nbO9').textContent=usd(-v.wtr);
+    $('nbO10').textContent=usd(-v.ga);
+    var nEl=$('nbNet'); nEl.textContent=usd(r.net); nEl.className='v '+(r.net>0?'pos':'neg');
+    $('nbPct').textContent=(r.net/v.P*100).toFixed(0)+'% of benchmark';
+    var lo=0, hi=400;
+    for(var k=0;k<60;k++){ var mid=(lo+hi)/2; if(netback(mid,v).net>0) hi=mid; else lo=mid; }
+    $('nbBe').textContent = hi>395 ? 'above $400' : usd((lo+hi)/2)+'/bbl';
+  }
+  [px,loc,qual,gath,roy,sev,loe,wtr,ga].forEach(function(el){el.addEventListener('input',calc);});
+  calc();
+})();
+
+/* ---------------- fiscal regime take ---------------- */
+(function(){
+  var px=$('ftPx'); if(!px) return;
+  var cost=$('ftCost'), roy=$('ftRoy'), ceil=$('ftCeil'), split=$('ftSplit'), tax=$('ftTax');
+  function calc(){
+    var P=parseInt(px.value,10)/100,
+        C=parseInt(cost.value,10)/100,
+        R=parseInt(roy.value,10)/1000,
+        CE=parseInt(ceil.value,10)/100,
+        S=parseInt(split.value,10)/100,
+        T=parseInt(tax.value,10)/100;
+    $('ftPxL').textContent=usd(P)+'/bbl';
+    $('ftCostL').textContent=usd(C)+'/bbl';
+    $('ftRoyL').textContent=(R*100).toFixed(1)+'%';
+    $('ftCeilL').textContent=(CE*100).toFixed(0)+'%';
+    $('ftSplitL').textContent=(S*100).toFixed(0)+'%';
+    $('ftTaxL').textContent=(T*100).toFixed(0)+'%';
+
+    var divisible = P - C;
+
+    /* PSC */
+    var royalty = P*R;
+    var netRev = P - royalty;
+    var costOil = Math.min(C, CE*netRev);
+    var unrec = Math.max(0, C-costOil);
+    var profitOil = netRev - costOil;
+    var govProfit = profitOil*S;
+    var conProfit = profitOil-govProfit;
+    var pscTax = Math.max(0, conProfit)*T;
+    var govPsc = royalty + govProfit + pscTax;
+    var conPsc = costOil + conProfit - pscTax - C;
+
+    /* Concession */
+    var cRoy = P*R;
+    var cTaxable = Math.max(0, P - cRoy - C);
+    var cTax = cTaxable*T;
+    var govCon = cRoy + cTax;
+    var conCon = P - cRoy - C - cTax;
+
+    $('ftPsc1').textContent=usd(royalty);
+    $('ftPsc2').textContent=usd(costOil);
+    $('ftPsc3').textContent=usd(unrec);
+    $('ftPsc4').textContent=usd(govProfit);
+    $('ftPsc5').textContent=usd(pscTax);
+    var t1=$('ftPscTake');
+    t1.textContent = divisible>0 ? (govPsc/divisible*100).toFixed(0)+'%' : 'n/a';
+    var n1=$('ftPscNet'); n1.textContent=usd(conPsc); n1.className='v '+(conPsc>0?'pos':'neg');
+
+    $('ftCon1').textContent=usd(cRoy);
+    $('ftCon2').textContent=usd(cTax);
+    var t2=$('ftConTake');
+    t2.textContent = divisible>0 ? (govCon/divisible*100).toFixed(0)+'%' : 'n/a';
+    var n2=$('ftConNet'); n2.textContent=usd(conCon); n2.className='v '+(conCon>0?'pos':'neg');
+  }
+  [px,cost,roy,ceil,split,tax].forEach(function(el){el.addEventListener('input',calc);});
+  calc();
+})();
+
+/* ---------------- glossary filter + search ---------------- */
+(function(){
+  var wrap=$('gWrap'); if(!wrap) return;
+  var items=[].slice.call(wrap.querySelectorAll('.gitem'));
+  var chips=[].slice.call(document.querySelectorAll('#gChips .chip'));
+  var search=$('gSearch'), count=$('gCount');
+  var cat='all';
+  items.forEach(function(it){ it.dataset.text=it.textContent.toLowerCase(); });
+  function apply(){
+    var q=(search&&search.value||'').trim().toLowerCase();
+    var n=0;
+    items.forEach(function(it){
+      var show=((cat==='all')||(it.dataset.cat===cat)) && (!q || it.dataset.text.indexOf(q)>-1);
+      it.classList.toggle('hide', !show);
+      if(show) n++;
+    });
+    if(count) count.textContent = n+' of '+items.length+' terms shown';
+  }
+  chips.forEach(function(c){
+    c.addEventListener('click',function(){
+      chips.forEach(function(x){x.classList.remove('active');});
+      c.classList.add('active'); cat=c.dataset.filter; apply();
+    });
+  });
+  if(search) search.addEventListener('input',apply);
+  apply();
+})();
+
+</script>
+</body>
+</html>
