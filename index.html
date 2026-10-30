@@ -4,12 +4,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- TITLE: must carry the version number. Pattern: "{Doc Title} v{N.N} — {subtitle}" -->
-<title>Oil From the Reservoir Up v1.0 — a field guide for people starting at zero</title>
+<title>Oil From the Reservoir Up v1.1 — a field guide for people starting at zero</title>
 <meta name="description" content="A ground-up guide to the oil and gas industry: petroleum geology, reserves reporting, drilling and completion, decline curves, differentials and refining, project economics, cost metrics, valuation, ownership and financing, fiscal regimes and tax structure, promotional red flags, and the 2026 map. Built for readers with no prior background." />
 <meta name="theme-color" content="#f5f5f7" id="themeColorMeta" />
 <meta name="color-scheme" content="light dark" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Oil From the Reservoir Up v1.0" />
+<meta property="og:title" content="Oil From the Reservoir Up v1.1" />
 <meta property="og:description" content="A ground-up guide to the oil and gas industry: petroleum geology, reserves reporting, drilling and completion, decline curves, differentials and refining, project economics, cost metrics, valuation, ownership and financing, fiscal regimes and tax structure, promotional red flags, and the 2026 map. Built for readers with no prior background." />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%230071e3'/%3E%3C/svg%3E" />
@@ -374,6 +374,10 @@ input[type=search]::placeholder,input[type=text]::placeholder{color:var(--ink-di
   .calc,.split{grid-template-columns:1fr}
   .toclist{grid-template-columns:1fr 1fr}
 }
+
+/* v-next: dated snapshot notice (tokens only) */
+.asof{font-family:var(--mono); font-size:12px; line-height:1.6; color:var(--ink-2); background:var(--orange-soft); border-left:3px solid var(--orange); border-radius:8px; padding:9px 13px; margin:8px 0 22px; max-width:92ch;}
+.asof b{color:var(--ink);}
 </style>
 </head>
 <body>
@@ -403,7 +407,7 @@ input[type=search]::placeholder,input[type=text]::placeholder{color:var(--ink-di
   </div>
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand">Oil From the Reservoir Up<span class="vtag">v1.0</span></div>
+      <div class="brand">Oil From the Reservoir Up<span class="vtag">v1.1</span></div>
       <div class="navlinks" id="navlinks"></div>
       <button class="menubtn" id="menubtn" type="button" aria-label="Menu"><i></i><i></i><i></i></button>
     </div>
@@ -415,7 +419,7 @@ input[type=search]::placeholder,input[type=text]::placeholder{color:var(--ink-di
 <header class="hero">
   <div class="orb a"></div><div class="orb b"></div>
   <div class="wrap">
-    <div class="eyebrow">Field guide &nbsp;/&nbsp; <b>v1.0</b> &nbsp;&middot;&nbsp; 10 September 2026, 5:25 AM ET &nbsp;&middot;&nbsp; <span class="mono">build 2026-09-10T05:25-04:00</span></div>
+    <div class="eyebrow">Field guide &nbsp;/&nbsp; <b>v1.1</b> · 20 October 2026, 5:46 PM ET · build 2026-10-20T17:46-04:00</div>
     <h1 class="h1">An oil well is a <em>declining annuity</em> you paid for in advance</h1>
     <p class="lede">Everything peculiar about the oil business follows from that. You spend the money first, the production arrives on a curve that falls steeply and never stops falling, the price you receive is set by a global market and a handful of governments, and the only way to stay the same size is to keep drilling. This guide starts at zero and works through the whole chain — the rock, the well, the decline curve, the barrel's journey to a refinery, the economics, the accounting, the fiscal regimes, the promotional tricks, and the map as it stands in a year the Strait of Hormuz has been effectively closed since February.</p>
     <div class="hero-actions">
@@ -435,6 +439,11 @@ input[type=search]::placeholder,input[type=text]::placeholder{color:var(--ink-di
     <p class="sub">A business that spends capital to convert an underground asset into a stream of cash that begins high, falls fast, and requires continuous reinvestment merely to stand still.</p>
 
     <p class="tight">Oil shares one deep property with mining — the asset depletes as you produce it — and then diverges from it almost immediately. In a mine, the metal sits still and you go and get it; production rate is a choice made by the size of the plant. In an oil field, the hydrocarbon flows to you under pressure, and the rate at which it does so is set by physics you influence but do not control. That single difference produces the <b>decline curve</b>, which is the organising fact of the entire industry.</p>
+    <div class="fieldnote">
+      <div class="kicker">Where the opening line breaks</div>
+      <p>The declining-annuity line is a heuristic for a single shale well, not a law of the industry. Three things make the payments less fixed than an annuity's. Prices move, so the same barrels can be worth half or double. Operators have discretion: choke management, refracs, shut-ins and workovers all change the curve. And the volumes are estimates; conventional fields on waterflood or with strong pressure support can hold a plateau for years before declining. At company level the line also understates choice, because a producer can stop drilling and harvest its decline for cash.</p>
+    </div>
+
 
     <p class="tight">A modern shale well might produce 1,200 barrels a day in its first month and 300 barrels a day two years later. Nobody made that decision. Reservoir pressure fell, the fractures that connect the rock to the wellbore drained the volume nearest them, and the rate collapsed accordingly. Roughly half of a shale well's total lifetime output arrives within its first three years. Everything about how these companies are financed, valued and mismanaged follows from that shape.</p>
 
@@ -623,9 +632,9 @@ input[type=search]::placeholder,input[type=text]::placeholder{color:var(--ink-di
 
     <p class="tight">J.J. Arps observed that oil wells decline in mathematically regular ways and described three cases. Exponential decline falls by a constant percentage each period. Harmonic decline flattens quickly. Hyperbolic decline sits between them and fits most real wells, especially unconventional ones:</p>
 
-    <div class="eq">q(t) = q&#8336; &divide; (1 + b &middot; D&#8336; &middot; t)^(1/b)</div>
+    <div class="eq">q(t) = qₐ &divide; (1 + b &middot; Dₐ &middot; t)^(1/b)</div>
 
-    <p class="tight">Three parameters do all the work. <b>q&#8336;</b> is the initial rate. <b>D&#8336;</b> is the initial decline rate. <b>b</b> is the hyperbolic exponent that controls how quickly the decline itself decelerates — b = 0 gives pure exponential, b = 1 gives harmonic, and shale wells are commonly fitted with b between 0.8 and 1.5. That b-factor is the most consequential and most contested number in shale valuation, because a small increase in b adds a very long tail of low-rate production and therefore a great deal of claimed ultimate recovery.</p>
+    <p class="tight">Three parameters do all the work. <b>qₐ</b> is the initial rate. <b>Dₐ</b> is the initial decline rate. <b>b</b> is the hyperbolic exponent that controls how quickly the decline itself decelerates — b = 0 gives pure exponential, b = 1 gives harmonic, and shale wells are commonly fitted with b between 0.8 and 1.5. That b-factor is the most consequential and most contested number in shale valuation, because a small increase in b adds a very long tail of low-rate production and therefore a great deal of claimed ultimate recovery.</p>
 
     <p class="tight">Left alone, a hyperbolic curve with b above 1 produces infinite cumulative recovery, which is obviously wrong. Standard practice is to impose a <b>terminal decline</b> — typically 5 to 8% a year — and switch to exponential once the hyperbolic decline rate falls that low. Whether an operator applies a terminal decline, and at what rate, is a question worth asking of any type curve.</p>
 
@@ -1126,6 +1135,8 @@ input[type=search]::placeholder,input[type=text]::placeholder{color:var(--ink-di
     <div class="kicker">14 &nbsp;/&nbsp; The present moment</div>
     <h2>Where the industry stands in September 2026</h2>
     <p class="sub">This is a war year. Almost everything else in the market is downstream of one waterway.</p>
+    <p class="asof"><b>Data as of 10 September 2026.</b> Figures and events in this section were current at the v1.0 build and were not re-checked for v1.1; treat it as a dated snapshot. Claim-by-claim verification against primary sources is scheduled for the next major version.</p>
+
 
     <h3 class="sub-h">1. Hormuz</h3>
     <p class="tight">A US-Israel military campaign against Iran began in late February 2026. Iran's response effectively closed the Strait of Hormuz, through which roughly a fifth of global oil and LNG supply passed in peacetime. Shipping largely stopped as insurers withdrew war-risk cover; Gulf exporters shut in production as regional storage filled. Brent went from about $72 the day before the strikes to $91 within a week, $109, and an intraday peak near $138 on 7 April — dated assessments briefly printed past $140, the highest since 2008. Total OPEC+ production fell from 42.77 million barrels a day in February to 33.13 million in May.</p>
@@ -1228,7 +1239,7 @@ input[type=search]::placeholder,input[type=text]::placeholder{color:var(--ink-di
       <div class="gitem" data-cat="prd"><h4>Water cut <em>Production</em></h4><p>Water as a share of total produced liquid. Rises through a conventional well's life until handling cost exceeds oil value and the well is shut in — usually the real end of a well, not exhaustion of oil.</p></div>
       <div class="gitem" data-cat="prd"><h4>GOR <em>Production</em></h4><p>Gas-oil ratio. Rises as reservoir pressure falls below the bubble point and dissolved gas breaks out. A rising GOR is a pressure-depletion signal and often precedes a rate decline.</p></div>
       <div class="gitem" data-cat="prd"><h4>Artificial lift <em>Production</em></h4><p>Pumps, gas lift or plunger systems installed when reservoir pressure can no longer push fluid to surface unaided. Nearly every mature well is on lift; the type and its failure rate drive operating cost.</p></div>
-      <div class="gitem" data-cat="prd"><h4>Secondary and enhanced recovery <em>Production</em></h4><p>Waterflooding or gas injection to maintain reservoir pressure (secondary); CO&#8322;, chemical or thermal methods to mobilise oil that pressure alone will not move (tertiary or EOR). Capital-intensive, and largely unsuccessful in shale so far.</p></div>
+      <div class="gitem" data-cat="prd"><h4>Secondary and enhanced recovery <em>Production</em></h4><p>Waterflooding or gas injection to maintain reservoir pressure (secondary); CO₂, chemical or thermal methods to mobilise oil that pressure alone will not move (tertiary or EOR). Capital-intensive, and largely unsuccessful in shale so far.</p></div>
       <div class="gitem" data-cat="prd"><h4>Stripper well <em>Production</em></h4><p>A well producing under about 15 barrels a day. Collectively a meaningful share of US production, individually marginal, and the source of most orphan-well liability.</p></div>
 
       <div class="gitem" data-cat="mid"><h4>Brent / WTI / Dubai <em>Midstream</em></h4><p>The three principal crude benchmarks: North Sea waterborne, Cushing Oklahoma pipeline, and the medium sour barrel flowing east. Each is a specific grade at a specific place, not "oil".</p></div>
@@ -1353,7 +1364,7 @@ input[type=search]::placeholder,input[type=text]::placeholder{color:var(--ink-di
 <footer class="footer">
   <div class="wrap">
     <p>Oil From the Reservoir Up &mdash; a ground-up field guide to the oil and gas industry, its economics and its vocabulary. Companion volume to <i>Mining From the Rock Up</i>. Written for readers starting from zero.</p>
-    <p class="verstamp">Oil From the Reservoir Up &mdash; v1.0 &middot; build 2026-09-10T05:25-04:00 &middot; first issue. Sections 1&ndash;17, three interactive models, 95 glossary terms.</p>
+    <p class="verstamp">Oil From the Reservoir Up — v1.1 · build 2026-10-20T17:46-04:00 · supersedes v1.0 (build 2026-09-10T05:25-04:00). Changes in v1.1: dated data-as-of notice on the 2026 market section; opening thesis qualified with where it breaks; numeric character entities converted to characters (clears a false positive in the style check). Figures not re-verified in this revision. Sections 1–17, three interactive models, 95 glossary terms.</p>
     <p style="margin-top:8px">Contact: <a href="mailto:ponelson@gmail.com">ponelson@gmail.com</a> &middot; <a href="https://www.linkedin.com/in/ponelson/">LinkedIn</a> &middot; <a href="https://ponelson.github.io/pon/">GitHub</a></p>
   </div>
 </footer>
